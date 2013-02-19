@@ -21,27 +21,27 @@ CCBoise is a project for [Calvary Chapel Boise](http://ccboise.org) to provide t
 
 ## Project Roadmap / Milestones
 ### Phase 1
-- [x] Define application structure
-- [x] Define ccboise.org data calls
-- [x] Create ccboise.org data calls
-- [ ] Create base project structure
-- [ ] Create initial native iOS App with MonoDevelop and MonoTouch
-- [ ] Test with project team
-- [ ] Fix bugs and adjust changes to feedback
-- [ ] Test with stakeholders and church staff
-- [ ] Fix bugs and adjust changes to feedback
-- [ ] Publish iOS app to marketplace
+- [ X ] Define application structure
+- [ X ] Define ccboise.org data calls
+- [ X ] Create ccboise.org data calls
+- [  ] Create base project structure
+- [  ] Create initial native iOS App with MonoDevelop and MonoTouch
+- [  ] Test with project team
+- [  ] Fix bugs and adjust changes to feedback
+- [  ] Test with stakeholders and church staff
+- [  ] Fix bugs and adjust changes to feedback
+- [  ] Publish iOS app to marketplace
 
 ### Phase 2
-- [ ] Create initial native Android app with MonoDevelop and Mono for Android
-- [ ] Test with project team
-- [ ] Fix bugs and adjust changes to feedback
-- [ ] Test with stakeholders and church staff
-- [ ] Fix bugs and adjust changes to feedback
-- [ ] Publish Google Play marketplace
+- [  ] Create initial native Android app with MonoDevelop and Mono for Android
+- [  ] Test with project team
+- [  ] Fix bugs and adjust changes to feedback
+- [  ] Test with stakeholders and church staff
+- [  ] Fix bugs and adjust changes to feedback
+- [  ] Publish Google Play marketplace
 
 ### Phase 3
-- [ ] Investigate addtional features and functionality - Not started
+- [  ] Investigate addtional features and functionality - Not started
 
 ## Future Goals
 * Create a mobile app framework that can be forked and used by any church.
