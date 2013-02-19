@@ -20,28 +20,28 @@ CCBoise is a project for [Calvary Chapel Boise](http://ccboise.org) to provide t
 	* Contact information for the church
 
 ## Project Roadmap / Milestones
-* # Phase 1
-	* Define application structure - #Completed#
-	* Define ccboise.org data calls - #Completed#
-	* Create ccboise.org data calls - #Completed#
-	* Create base project structure - #In Progress#
-	* Create initial native iOS App with MonoDevelop and MonoTouch - Not Started
-	* Test with project team - Not Started
-	* Fix bugs and adjust changes to feedback - Not Started
-	* Test with stakeholders and church staff - Not Started
-	* Fix bugs and adjust changes to feedback - Not Started
-	* Publish iOS app to marketplace - Not Started
+### Phase 1
+- [x] Define application structure
+- [x] Define ccboise.org data calls
+- [x] Create ccboise.org data calls
+- [ ] Create base project structure
+- [ ] Create initial native iOS App with MonoDevelop and MonoTouch
+- [ ] Test with project team
+- [ ] Fix bugs and adjust changes to feedback
+- [ ] Test with stakeholders and church staff
+- [ ] Fix bugs and adjust changes to feedback
+- [ ] Publish iOS app to marketplace
 
-* # Phase 2
-	* Create initial native Android app with MonoDevelop and Mono for Android - Not Started
-	* Test with project team - Not Started
-	* Fix bugs and adjust changes to feedback - Not Started
-	* Test with stakeholders and church staff - Not Started
-	* Fix bugs and adjust changes to feedback - Not Started
-	* Publish Google Play marketplace - Not Started
+### Phase 2
+- [ ] Create initial native Android app with MonoDevelop and Mono for Android
+- [ ] Test with project team
+- [ ] Fix bugs and adjust changes to feedback
+- [ ] Test with stakeholders and church staff
+- [ ] Fix bugs and adjust changes to feedback
+- [ ] Publish Google Play marketplace
 
-* # Phase 3
-	* Investigate addtional features and functionality - Not started
+### Phase 3
+- [ ] Investigate addtional features and functionality - Not started
 
 ## Future Goals
 * Create a mobile app framework that can be forked and used by any church.
