@@ -21,7 +21,7 @@ CCBoise is a project for [Calvary Chapel Boise](http://ccboise.org) to provide t
 
 ## Project Roadmap / Milestones
 ### Phase 1
-- [x] Define application structure
+- ![https://dl.dropbox.com/u/1301025/icons/checked.gif] Define application structure
 - [x] Define ccboise.org data calls
 - [x] Create ccboise.org data calls
 - [ ] Create base project structure

@@ -1,0 +1,10 @@
+
+http://www.ccboise.org/api/messages/video
+http://www.ccboise.org/api/messages/audio
+
+http://www.ccboise.org/api/daily/devotionals
+http://www.ccboise.org/api/daily/devotional/{ItemId}
+
+http://www.ccboise.org/api/connect/events
+http://www.ccboise.org/api/connect/calendar
+http://www.ccboise.org/api/connect/calendar-event/9243
