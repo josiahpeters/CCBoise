@@ -21,27 +21,27 @@ CCBoise is a project for [Calvary Chapel Boise](http://ccboise.org) to provide t
 
 ## Project Roadmap / Milestones
 ### Phase 1
-- ![https://dl.dropbox.com/u/1301025/icons/checked.gif] Define application structure
-- [x] Define ccboise.org data calls
-- [x] Create ccboise.org data calls
-- [ ] Create base project structure
-- [ ] Create initial native iOS App with MonoDevelop and MonoTouch
-- [ ] Test with project team
-- [ ] Fix bugs and adjust changes to feedback
-- [ ] Test with stakeholders and church staff
-- [ ] Fix bugs and adjust changes to feedback
-- [ ] Publish iOS app to marketplace
+- ![Completed](https://dl.dropbox.com/u/1301025/icons/checked.gif) Define application structure
+- ![Completed](https://dl.dropbox.com/u/1301025/icons/checked.gif) Define ccboise.org data calls
+- ![Completed](https://dl.dropbox.com/u/1301025/icons/checked.gif) Create ccboise.org data calls
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Create base project structure
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Create initial native iOS App with MonoDevelop and MonoTouch
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Test with project team
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Fix bugs and adjust changes to feedback
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Test with stakeholders and church staff
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Fix bugs and adjust changes to feedback
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Publish iOS app to marketplace
 
 ### Phase 2
-- [ ] Create initial native Android app with MonoDevelop and Mono for Android
-- [ ] Test with project team
-- [ ] Fix bugs and adjust changes to feedback
-- [ ] Test with stakeholders and church staff
-- [ ] Fix bugs and adjust changes to feedback
-- [ ] Publish Google Play marketplace
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Create initial native Android app with MonoDevelop and Mono for Android
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Test with project team
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Fix bugs and adjust changes to feedback
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Test with stakeholders and church staff
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Fix bugs and adjust changes to feedback
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Publish Google Play marketplace
 
 ### Phase 3
-- [ ] Investigate addtional features and functionality - Not started
+- ![Incomplete](https://dl.dropbox.com/u/1301025/icons/unchecked.gif) Investigate addtional features and functionality - Not started
 
 ## Future Goals
 * Create a mobile app framework that can be forked and used by any church.
