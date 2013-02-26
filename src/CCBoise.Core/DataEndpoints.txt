@@ -4,7 +4,40 @@ http://www.ccboise.org/api/messages/audio
 
 http://www.ccboise.org/api/daily/devotionals
 http://www.ccboise.org/api/daily/devotional/{ItemId}
+http://www.ccboise.org/api/daily/prayer
 
 http://www.ccboise.org/api/connect/events
 http://www.ccboise.org/api/connect/calendar
-http://www.ccboise.org/api/connect/calendar-event/9243
+http://www.ccboise.org/api/connect/calendar-event/{ItemId}
+
+Root:TableViewController
+	Messages:TableViewController
+		Video:TableViewController
+			SundayMornings:TableViewController
+				Video:VideoViewController
+			EngageTruth:TableViewController
+				Video:VideoViewController
+			Voices:TableViewController
+				Video:VideoViewController
+			ChapelMissions:TableViewController
+				Video:VideoViewController
+		Audio:TableViewController
+			SundayMornings:TableViewController
+				Audio:ViewController
+			EngageTruth:TableViewController
+				Audio:ViewController
+			Voices:TableViewController
+				Audio:ViewController
+			ChapelMissions:TableViewController
+				Audio:ViewController
+
+	Daily:TableViewController
+		Daily Devotional:TableViewController
+		Prayer Task Force:TableViewController
+			February 25, 2013
+				13469:WebTransformedContentView
+
+
+	Connect:TableViewController
+
+	About:TableViewController
