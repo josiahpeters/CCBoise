@@ -36,6 +36,7 @@ namespace CCBoise.Data
         private string getUrlContent(string url)
         {
             //using(WebClient 
+            return "";
         }
     }
 
