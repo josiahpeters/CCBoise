@@ -1,0 +1,77 @@
+{
+	"title": "Calvary Chapel  Boise",
+	"sections": [
+		{
+			"header": "Messages",			
+			"elements": [
+				{
+					"type": "root",
+                    "title": "Video"
+				},
+				{
+					"type": "root",
+                    "title": "Audio"
+				}
+			]
+		},
+		{
+			"header": "Daily",			
+			"elements": [
+				{
+					"type": "root",
+                    "title": "Pathway Devotions"
+				},
+				{
+					"type": "root",
+                    "title": "Prayer Task Force"
+				}
+			]
+		},
+		{
+			"header": "Connect",			
+			"elements": [
+				{
+					"type": "root",
+                    "title": "Events"
+				},
+				{
+					"type": "root",
+                    "title": "Calendar"
+				},
+				{
+					"type": "root",
+                    "title": "Social Media"
+				},
+				{
+					"type": "root",
+                    "title": "Location and Directions"
+				}
+			]
+		},
+		{
+			"header": "About",			
+			"elements": [
+				{
+					"type": "root",
+                    "title": "Service Times"
+				},
+				{
+					"type": "root",
+                    "title": "Ministries"
+				},
+				{
+					"type": "root",
+                    "title": "Pastors"
+				},
+				{
+					"type": "root",
+                    "title": "Contact Information"
+				},
+				{
+					"type": "root",
+                    "title": "Website"
+				}
+			]
+		}
+	]
+}

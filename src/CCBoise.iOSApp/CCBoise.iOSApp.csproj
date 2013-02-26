@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="MonoTouch.Dialog-1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -92,9 +93,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="TableItem.cs" />
-    <Compile Include="TableSource.cs" />
-    <Compile Include="TableViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -103,5 +101,8 @@
     <BundleResource Include="Images\Icons\video-channel-et-icon.png" />
     <BundleResource Include="Images\Icons\video-channel-sunday-icon.png" />
     <BundleResource Include="Images\Icons\video-channel-voices-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CCBoise.json" />
   </ItemGroup>
 </Project>

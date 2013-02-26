@@ -4,6 +4,7 @@ using System.Linq;
 
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoTouch.Dialog;
 
 namespace CCBoise.iOSApp
 {
@@ -17,6 +18,12 @@ namespace CCBoise.iOSApp
 		UIWindow window;
 		UINavigationController navigationController;
 		UIViewController viewController;
+
+		RootElement rootElement;
+		DialogViewController rootDvc;
+		UIBarButtonItem addButton;
+
+		int n = 0;
 		
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this 
@@ -29,13 +36,20 @@ namespace CCBoise.iOSApp
 		{
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
-			viewController = new TableViewController();
+			rootElement = new RootElement ("To Do List"){new Section ()};
+
+			var jsonElement = JsonElement.FromFile ("CCBoise.json");
+			rootDvc = new DialogViewController (jsonElement);
 			
-			navigationController = new UINavigationController();
-			navigationController.PushViewController (viewController, false);
+			navigationController = new UINavigationController(rootDvc);
+			//navigationController.PushViewController (viewController, false);
+			window.RootViewController = navigationController;
+
+
+			rootDvc.NavigationItem.RightBarButtonItem = addButton;
 			
 			// If you have defined a view, add it here:
-			window.AddSubview (navigationController.View);
+			//window.AddSubview (navigationController.View);
 			
 			// make the window visible
 			window.MakeKeyAndVisible ();
@@ -43,5 +57,12 @@ namespace CCBoise.iOSApp
 			return true;
 		}
 	}
+
+		public class Task 
+		{
+			public string Name { get; set; }
+			public string Description { get; set; }
+			public DateTime DueDate { get; set; }
+		}
 }
 
