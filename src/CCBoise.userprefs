@@ -1,20 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CCBoise.iOSApp/TableViewController.cs">
-    <Files>
-      <File FileName="CCBoise.Core/DataEndpoints.txt" Line="10" Column="43" />
-      <File FileName="CCBoise.iOSApp/Main.cs" Line="11" Column="3" />
-      <File FileName="CCBoise.iOSApp/AppDelegate.cs" Line="16" Column="30" />
-      <File FileName="CCBoise.iOSApp/TableSource.cs" Line="12" Column="4" />
-      <File FileName="CCBoise.iOSApp/TableViewController.cs" Line="13" Column="3" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="CCBoise.Core" expanded="True" />
-          <Node name="CCBoise.iOSApp" expanded="True">
-            <Node name="TableViewController.cs" selected="True" />
+          <Node name="CCBoise.Data" expanded="True">
+            <Node name="References" expanded="True" />
           </Node>
+          <Node name="CCBoise.iOSApp" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

@@ -17,7 +17,7 @@ namespace CCBoise.iOSApp
 		UIWindow window;
 		UINavigationController navigationController;
 		UIViewController viewController;
-
+		
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this 
 		// method you should instantiate the window, load the UI into it and then make the window
