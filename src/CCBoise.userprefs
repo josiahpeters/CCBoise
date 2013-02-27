@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CCBoise.iOSApp/AppDelegate.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CCBoise.iOSApp/CCBoise.json">
     <Files>
-      <File FileName="CCBoise.iOSApp/AppDelegate.cs" Line="30" Column="60" />
-      <File FileName="CCBoise.iOSApp/CCBoise.json" Line="1" Column="1" />
+      <File FileName="CCBoise.iOSApp/AppDelegate.cs" Line="26" Column="13" />
+      <File FileName="CCBoise.iOSApp/CCBoise.json" Line="19" Column="14" />
+      <File FileName="../../../Downloads/MTDJsonDemo/MTDJsonDemo/sample.json" Line="11" Column="19" />
+      <File FileName="CCBoise.iOSApp/HtmlStringElement.cs" Line="75" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,6 +14,7 @@
           <Node name="CCBoise.Data" expanded="True" />
           <Node name="CCBoise.iOSApp" expanded="True">
             <Node name="Images" expanded="True" />
+            <Node name="CCBoise.json" selected="True" />
           </Node>
         </State>
       </Pad>

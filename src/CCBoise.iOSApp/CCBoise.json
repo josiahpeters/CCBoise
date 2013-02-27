@@ -5,12 +5,27 @@
 			"header": "Messages",			
 			"elements": [
 				{
+                    "title": "Video",
 					"type": "root",
-                    "title": "Video"
+					"sections": [
+		            	{
+		            		"header": "Web View",
+					      	"elements": [
+					      		{
+					      			"type": "htmlstring",
+					      			"caption": "Miguel's blog",
+					      			"html": "<html><body><h1>Test</h1><p>Hello world</p>" 
+					      		}
+					      	]
+			      		}
+		            	                
+		            ]
 				},
 				{
+                    "title": "Audio",
 					"type": "root",
-                    "title": "Audio"
+					"elements": [
+					]
 				}
 			]
 		},
@@ -18,12 +33,16 @@
 			"header": "Daily",			
 			"elements": [
 				{
+                    "title": "Pathway Devotions",
 					"type": "root",
-                    "title": "Pathway Devotions"
+					"elements": [
+					]
 				},
 				{
+                    "title": "Prayer Task Force",
 					"type": "root",
-                    "title": "Prayer Task Force"
+					"elements": [
+					]
 				}
 			]
 		},
@@ -31,20 +50,28 @@
 			"header": "Connect",			
 			"elements": [
 				{
+                    "title": "Events",
 					"type": "root",
-                    "title": "Events"
+					"elements": [
+					]
 				},
 				{
+                    "title": "Calendar",
 					"type": "root",
-                    "title": "Calendar"
+					"elements": [
+					]
 				},
 				{
+                    "title": "Social Media",
 					"type": "root",
-                    "title": "Social Media"
+					"elements": [
+					]
 				},
 				{
+                    "title": "Location and Directions",
 					"type": "root",
-                    "title": "Location and Directions"
+					"elements": [
+					]
 				}
 			]
 		},
@@ -52,24 +79,34 @@
 			"header": "About",			
 			"elements": [
 				{
+                    "title": "Service Times",
 					"type": "root",
-                    "title": "Service Times"
+					"elements": [
+					]
 				},
 				{
+                    "title": "Ministries",
 					"type": "root",
-                    "title": "Ministries"
+					"elements": [
+					]
 				},
 				{
+                    "title": "Pastors",
 					"type": "root",
-                    "title": "Pastors"
+					"elements": [
+					]
 				},
 				{
+                    "title": "Contact Information",
 					"type": "root",
-                    "title": "Contact Information"
+					"elements": [
+					]
 				},
 				{
-					"type": "root",
-                    "title": "Website"
+                    "title": "Website",
+                    "type": "root",
+					"elements": [
+					]
 				}
 			]
 		}
