@@ -38,13 +38,24 @@ namespace CCBoise.iOSApp
 			
 			rootElement = new RootElement ("To Do List"){new Section ()};
 
-			var jsonElement = JsonElement.FromFile ("CCBoise.json");
+            var jsonElement = JsonElement.FromFile ("Json/CCBoise.json");
+            var videoElements = JsonElement.FromFile("Json/video.json");
 			rootDvc = new DialogViewController (jsonElement);
 			
 			navigationController = new UINavigationController(rootDvc);
 			//navigationController.PushViewController (viewController, false);
 			window.RootViewController = navigationController;
 
+            //sections elements sections elements
+
+            var videos = jsonElement["videos"] as RootElement;
+
+            var jsonVideo = jsonElement["videos"] as JsonElement;
+
+            //json
+
+            //jsonElement["videos"].Get
+            videos.Add(videoElements);
 
 			rootDvc.NavigationItem.RightBarButtonItem = addButton;
 			

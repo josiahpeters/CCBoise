@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Net;
+//using System.Net;
 using System.IO;
 
 namespace CCBoise.Data
@@ -37,9 +37,10 @@ namespace CCBoise.Data
 
         private string getUrlContent(string url)
         {
-			var webClient = new WebClient();
-			var response = webClient.DownloadString (new Uri (url));
-            return response;
+            //var webClient = new WebClient();
+            //var response = webClient.DownloadString (new Uri (url));
+            //return response;
+            return "";
         }
     }
 

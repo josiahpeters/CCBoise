@@ -8,5 +8,21 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string>CCBoise</string>
+	<key>CFBundleIdentifier</key>
+	<string>test</string>
+	<key>CFBundleVersion</key>
+	<string>0.0.1a</string>
+	<key>MinimumOSVersion</key>
+	<string>6.1</string>
+	<key>NSMainNibFile</key>
+	<string></string>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array/>
 </dict>
 </plist>

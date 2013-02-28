@@ -6,19 +6,10 @@
 			"elements": [
 				{
                     "title": "Video",
+					"id": "videos",
 					"type": "root",
 					"sections": [
-		            	{
-		            		"header": "Web View",
-					      	"elements": [
-					      		{
-					      			"type": "htmlstring",
-					      			"caption": "Miguel's blog",
-					      			"html": "<html><body><h1>Test</h1><p>Hello world</p>" 
-					      		}
-					      	]
-			      		}
-		            	                
+		            			            	                
 		            ]
 				},
 				{
