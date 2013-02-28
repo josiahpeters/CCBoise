@@ -13,9 +13,9 @@
 		<integer>1</integer>
 	</array>
 	<key>CFBundleDisplayName</key>
-	<string>CCBoise</string>
+	<string>Boise Calvary</string>
 	<key>CFBundleIdentifier</key>
-	<string>test</string>
+	<string>CCBoise</string>
 	<key>CFBundleVersion</key>
 	<string>0.0.1a</string>
 	<key>MinimumOSVersion</key>
@@ -24,5 +24,14 @@
 	<string></string>
 	<key>MKDirectionsApplicationSupportedModes</key>
 	<array/>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Resources/icon57.png</string>
+		<string>Resources/icon114.png</string>
+		<string>Resources/icon72.png</string>
+		<string>Resources/icon29.png</string>
+		<string>Resources/icon50.png</string>
+		<string>Resources/icon58.png</string>
+	</array>
 </dict>
 </plist>

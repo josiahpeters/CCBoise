@@ -105,19 +105,24 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
+    <BundleResource Include="Resources\icon57.png" />
+    <BundleResource Include="Resources\icon114.png" />
+    <BundleResource Include="Resources\icon72.png" />
+    <BundleResource Include="Resources\icon29.png" />
+    <BundleResource Include="Resources\icon50.png" />
+    <BundleResource Include="Resources\icon58.png" />
     <None Include="Info.plist" />
     <Content Include="Json\video.js" />
+    <ITunesArtwork Include="ITunesArtwork" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Elements\HtmlStringElement.cs" />
-    <Compile Include="Elements\ImageTitleDescriptionElement.cs" />
+    <Compile Include="MonoTouchUI\HtmlStringElement.cs" />
+    <Compile Include="MonoTouchUI\ImageTitleDescriptionElement.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="VideoCell.cs" />
+    <Compile Include="MonoTouchUI\DetailedImageCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>

@@ -39,13 +39,13 @@ namespace CCBoise.iOSApp
                 return new HtmlStringElement(caption, html);
             });
 
-            JsonElement.RegisterElementMapping("imagetitledetailstring", (json, data) =>
+            JsonElement.RegisterElementMapping("detailedImage", (json, data) =>
             {
                 var imageUri = GetString(json, "imageUri");
                 var title = GetString(json, "title");
                 var detail = GetString(json, "detail");
 
-                return new ImageTitleDescriptionElement(imageUri, title, detail);
+                return new DetailedImageElement(imageUri, title, detail);
             });
 
             var jsonElement = JsonElement.FromFile ("Json/CCBoise.js");

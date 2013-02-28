@@ -49,6 +49,9 @@ namespace CCBoise.iOSApp
 
         public class DetailedImageView : UIView, IImageUpdated
         {
+            UILabel titleLabel;
+            UILabel subTitleLabel;
+
             DetailImageData data;
 
             static UIFont titleFont = UIFont.BoldSystemFontOfSize(15);
@@ -87,20 +90,27 @@ namespace CCBoise.iOSApp
 
             public DetailedImageView(DetailImageData data)
             {
+                titleLabel = new UILabel() { Lines = 2, Font = titleFont };
+                subTitleLabel = new UILabel() { Lines = 2, Font = subTitleFont };
                 this.data = data;
             }
 
             public void Update(DetailImageData newData)
             {
-                //imgView.Frame = new RectangleF(0, 0, 50, 35);
-                ImageUri = newData.ImageUri;
+                data = newData;
+
+                ImageUri = data.ImageUri;
+
 
                 if (ImageUri != null)
                     image = ImageLoader.DefaultRequestImage(ImageUri, this);
                 else if (Image != null)
                     image = Image;
                 else
-                    image = null;                
+                    image = null;
+
+                titleLabel.Text = data.Title;
+                subTitleLabel.Text = data.SubTitle;
 
                 SetNeedsDisplay();
             }
@@ -154,9 +164,12 @@ namespace CCBoise.iOSApp
 
                 titleTextColor.SetColor();
 
+                //titleLabel.DrawText(new RectangleF(padding, padding, contentWidth, titleHeight));
+
                 DrawString(data.Title, new RectangleF(padding, padding, contentWidth, titleHeight), titleFont);
 
                 subTitleTextColor.SetColor();
+                //subTitleLabel.DrawText(new RectangleF(padding, padding + titleHeight, contentWidth, height - (titleHeight + padding)));
                 DrawString(data.SubTitle, new RectangleF(padding, padding + titleHeight, contentWidth, height - (titleHeight + padding)), subTitleFont);
 
                 if (image != null)
@@ -180,30 +193,4 @@ namespace CCBoise.iOSApp
             }
         }
     }
-
-    /*public class MyDataCell : 
-    {
-        MyDataView myDataView;
-
-        public MyDataCell(MyData myData, NSString identKey)
-            : base(UITableViewCellStyle.Default, identKey)
-        {
-            // Configure your cell here: selection style, colors, properties
-            myDataView = new MyDataView(myData);
-            ContentView.Add(myDataView);
-        }
-
-        public override void LayoutSubviews()
-        {
-            base.LayoutSubviews();
-            myDataView.Frame = ContentView.Bounds;
-            myDataView.SetNeedsDisplay();
-        }
-
-        // Called by our client code when we get new data.
-        public void UpdateCell(MyData newData)
-        {
-            myDataView.Update(newData);
-        }
-    }*/
 }
