@@ -72,7 +72,7 @@ namespace CCBoise.iOSApp
             var cell = tv.DequeueReusableCell(ckey);
             if (cell == null)
             {
-                cell = new VideoCell(title, detail, imgUrl)
+                cell = new DetailedImageCell(title, detail, imgUrl)
                 {
                     SelectionStyle = UITableViewCellSelectionStyle.Blue
                 };

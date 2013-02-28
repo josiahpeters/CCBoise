@@ -14,13 +14,13 @@ namespace CCBoise.iOSApp
         public string SubTitle { get; set; }
         public Uri ImageUri { get; set; }
     }
-    public class VideoCell : UITableViewCell
+    public class DetailedImageCell : UITableViewCell
     {
-        VideoCellView videoCellView;
+        DetailedImageView videoCellView;
 
         DetailImageData data;
 
-        public VideoCell(string title, string subTitle, string imageUri)
+        public DetailedImageCell(string title, string subTitle, string imageUri)
         {
             data = new DetailImageData { 
                 Title = title,
@@ -28,7 +28,7 @@ namespace CCBoise.iOSApp
                 ImageUri = new Uri(imageUri)
             };
 
-            videoCellView = new VideoCellView(data);
+            videoCellView = new DetailedImageView(data);
             UpdateCell(data);
             ContentView.Add(videoCellView);
         }
@@ -47,7 +47,7 @@ namespace CCBoise.iOSApp
             videoCellView.SetNeedsDisplay();
         }
 
-        public class VideoCellView : UIView, IImageUpdated
+        public class DetailedImageView : UIView, IImageUpdated
         {
             DetailImageData data;
 
@@ -85,7 +85,7 @@ namespace CCBoise.iOSApp
                 }
             }
 
-            public VideoCellView(DetailImageData data)
+            public DetailedImageView(DetailImageData data)
             {
                 this.data = data;
             }
