@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Json;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.Dialog;
@@ -17,13 +17,8 @@ namespace CCBoise.iOSApp
 		// class-level declarations
 		UIWindow window;
 		UINavigationController navigationController;
-		UIViewController viewController;
 
-		RootElement rootElement;
 		DialogViewController rootDvc;
-		UIBarButtonItem addButton;
-
-		int n = 0;
 		
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this 
@@ -35,30 +30,39 @@ namespace CCBoise.iOSApp
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
-			
-			rootElement = new RootElement ("To Do List"){new Section ()};
 
-            var jsonElement = JsonElement.FromFile ("Json/CCBoise.json");
-            var videoElements = JsonElement.FromFile("Json/video.json");
+            JsonElement.RegisterElementMapping("htmlstring", (json, data) => {
+
+                var caption = GetString(json, "caption");
+                var html = GetString(json, "html");
+
+                return new HtmlStringElement(caption, html);
+            });
+
+            JsonElement.RegisterElementMapping("imagetitledetailstring", (json, data) =>
+            {
+                var imageUri = GetString(json, "imageUri");
+                var title = GetString(json, "title");
+                var detail = GetString(json, "detail");
+
+                return new ImageTitleDescriptionElement(imageUri, title, detail);
+            });
+
+            var jsonElement = JsonElement.FromFile ("Json/CCBoise.js");
+            var videoElements = JsonElement.FromFile("Json/video.js");
 			rootDvc = new DialogViewController (jsonElement);
 			
 			navigationController = new UINavigationController(rootDvc);
-			//navigationController.PushViewController (viewController, false);
+
 			window.RootViewController = navigationController;
 
             //sections elements sections elements
-
             var videos = jsonElement["videos"] as RootElement;
 
             var jsonVideo = jsonElement["videos"] as JsonElement;
 
-            //json
-
-            //jsonElement["videos"].Get
             videos.Add(videoElements);
 
-			rootDvc.NavigationItem.RightBarButtonItem = addButton;
-			
 			// If you have defined a view, add it here:
 			//window.AddSubview (navigationController.View);
 			
@@ -67,6 +71,14 @@ namespace CCBoise.iOSApp
 			
 			return true;
 		}
+
+        static string GetString(JsonValue obj, string key)
+        {
+            if (obj.ContainsKey(key))
+                if (obj[key].JsonType == JsonType.String)
+                    return (string)obj[key];
+            return null;
+        }
 	}
 
 		public class Task 
@@ -75,5 +87,24 @@ namespace CCBoise.iOSApp
 			public string Description { get; set; }
 			public DateTime DueDate { get; set; }
 		}
+    /*
+    static Element LoadImageTitleDetailElement(JsonObject json)
+        {
+            var imageurl = GetString(json, "imageUri");
+            var title = GetString(json, "title");
+            var detail = GetString(json, "detail");
+
+            return new ImageTitleDescriptionElement(imageurl, title, detail);
+        }
+
+        static Element LoadHtmlStringElement(JsonObject json)
+        {
+            var caption = GetString(json, "caption");
+            var html = GetString(json, "html");
+
+            return new HtmlStringElement(caption, html);
+        }
+     */
+
 }
 

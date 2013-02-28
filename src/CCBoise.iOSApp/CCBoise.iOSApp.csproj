@@ -100,6 +100,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Json" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
@@ -109,12 +110,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
-    <Content Include="Json\video.json" />
+    <Content Include="Json\video.js" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Elements\HtmlStringElement.cs" />
+    <Compile Include="Elements\ImageTitleDescriptionElement.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="HtmlStringElement.cs" />
+    <Compile Include="VideoCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
@@ -125,7 +128,7 @@
     <BundleResource Include="Images\Icons\video-channel-voices-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Json\CCBoise.json" />
+    <Content Include="Json\CCBoise.js" />
     <Content Include="HtmlContent\main.css" />
   </ItemGroup>
   <ItemGroup>
