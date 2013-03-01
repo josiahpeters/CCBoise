@@ -99,6 +99,10 @@
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MonoTouch.Dialog, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\MonoTouch.Dialog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Json" />
     <Reference Include="System.Xml" />
@@ -113,6 +117,8 @@
     <BundleResource Include="Resources\icon29.png" />
     <BundleResource Include="Resources\icon50.png" />
     <BundleResource Include="Resources\icon58.png" />
+    <Content Include="MonoTouch.Dialog.dll" />
+    <Content Include="MonoTouch.Dialog.pdb" />
     <None Include="Info.plist" />
     <Content Include="Json\video.js" />
     <ITunesArtwork Include="ITunesArtwork" />
@@ -147,11 +153,5 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\MonoTouch.Dialog\MonoTouch.Dialog\MonoTouch.Dialog.csproj">
-      <Project>{3ffbfff8-5560-4ede-82e5-3ffdfbba8a50}</Project>
-      <Name>MonoTouch.Dialog</Name>
-    </ProjectReference>
   </ItemGroup>
 </Project>
