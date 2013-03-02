@@ -117,6 +117,10 @@
     <BundleResource Include="Resources\icon29.png" />
     <BundleResource Include="Resources\icon50.png" />
     <BundleResource Include="Resources\icon58.png" />
+    <Content Include="Images\TabIcons\18-envelope.png" />
+    <Content Include="Images\TabIcons\55-network.png" />
+    <Content Include="Images\TabIcons\60-signpost.png" />
+    <Content Include="Images\TabIcons\83-calendar.png" />
     <Content Include="MonoTouch.Dialog.dll" />
     <Content Include="MonoTouch.Dialog.pdb" />
     <None Include="Info.plist" />
@@ -129,6 +133,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="MonoTouchUI\DetailedImageCell.cs" />
+    <Compile Include="NavViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>

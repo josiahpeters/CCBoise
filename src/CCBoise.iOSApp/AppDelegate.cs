@@ -5,34 +5,35 @@ using System.Json;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.Dialog;
+using System.IO;
 
 namespace CCBoise.iOSApp
 {
-	// The UIApplicationDelegate for the application. This class is responsible for launching the 
-	// User Interface of the application, as well as listening (and optionally responding) to 
-	// application events from iOS.
-	[Register ("AppDelegate")]
-	public partial class AppDelegate : UIApplicationDelegate
-	{
-		// class-level declarations
-		UIWindow window;
-		UINavigationController navigationController;
+    // The UIApplicationDelegate for the application. This class is responsible for launching the 
+    // User Interface of the application, as well as listening (and optionally responding) to 
+    // application events from iOS.
+    [Register("AppDelegate")]
+    public partial class AppDelegate : UIApplicationDelegate
+    {
+        // class-level declarations
+        UIWindow window;
+        UINavigationController navigationController;
 
-		DialogViewController rootDvc;
-		
-		//
-		// This method is invoked when the application has loaded and is ready to run. In this 
-		// method you should instantiate the window, load the UI into it and then make the window
-		// visible.
-		//
-		// You have 17 seconds to return from this method, or iOS will terminate your application.
-		//
-		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
-		{
-			window = new UIWindow (UIScreen.MainScreen.Bounds);
+        DialogViewController rootDvc;
 
-            JsonElement.RegisterElementMapping("htmlstring", (json, data) => {
+        UITabBarController navigation;
 
+        //
+        // This method is invoked when the application has loaded and is ready to run. In this 
+        // method you should instantiate the window, load the UI into it and then make the window
+        // visible.
+        //
+        // You have 17 seconds to return from this method, or iOS will terminate your application.
+        //
+        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        {
+            JsonElement.RegisterElementMapping("htmlstring", (json, data) =>
+            {
                 var caption = GetString(json, "caption");
                 var html = GetString(json, "html");
 
@@ -48,29 +49,54 @@ namespace CCBoise.iOSApp
                 return new DetailedImageElement(imageUri, title, detail);
             });
 
-            var jsonElement = JsonElement.FromFile ("Json/CCBoise.js");
+
+            window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+            JsonObject rootJson;
+            using (var reader = File.OpenRead("Json/CCBoise.js"))
+            {
+                rootJson = JsonObject.Load(reader) as JsonObject;
+            }
+
             var videoElements = JsonElement.FromFile("Json/video.js");
-			rootDvc = new DialogViewController (jsonElement);
-			
-			navigationController = new UINavigationController(rootDvc);
 
-			window.RootViewController = navigationController;
 
-            //sections elements sections elements
-            var videos = jsonElement["videos"] as RootElement;
+            var sections = rootJson["tabs"] as JsonArray;
 
-            var jsonVideo = jsonElement["videos"] as JsonElement;
+            var tabs = new List<UIViewController>();
 
-            videos.Add(videoElements);
+            foreach (JsonObject section in sections)
+            {
+                var tab = new UINavigationController();
 
-			// If you have defined a view, add it here:
-			//window.AddSubview (navigationController.View);
-			
-			// make the window visible
-			window.MakeKeyAndVisible ();
-			
-			return true;
-		}
+                string title = (string)section["title"];
+                string icon = (string)section["icon"];
+
+                tab.TabBarItem = new UITabBarItem(title, UIImage.FromFile(icon), 1);
+
+                var jsonElement = JsonElement.FromJson(section);
+
+                var videos = jsonElement["videos"] as RootElement;
+                if(videos != null)
+                    videos.Add(videoElements);
+
+
+                tab.PushViewController(new DialogViewController(jsonElement), false);
+
+                tabs.Add(tab);
+            }
+
+            navigation = new UITabBarController();
+            navigation.ViewControllers = tabs.ToArray();
+            
+            navigation.CustomizableViewControllers = new UIViewController[0];
+
+            window.RootViewController = navigation;
+
+            window.MakeKeyAndVisible();
+
+            return true;
+        }
 
         static string GetString(JsonValue obj, string key)
         {
@@ -79,14 +105,14 @@ namespace CCBoise.iOSApp
                     return (string)obj[key];
             return null;
         }
-	}
+    }
 
-		public class Task 
-		{
-			public string Name { get; set; }
-			public string Description { get; set; }
-			public DateTime DueDate { get; set; }
-		}
+    public class Task
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public DateTime DueDate { get; set; }
+    }
     /*
     static Element LoadImageTitleDetailElement(JsonObject json)
         {
