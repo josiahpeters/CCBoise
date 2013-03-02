@@ -50,6 +50,20 @@
                 }
 		    ]
 		},
+        {
+            "title": "Home",
+            "icon": "Images/TabIcons/53-house.png",
+            "sections": [
+                {
+                    "elements": [
+                        {
+                            "caption": "Welcome to the Calvary Chapel Boise Mobile app",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
 		{
 		    "title": "Connect",		
 		    "icon": "Images/TabIcons/55-network.png",

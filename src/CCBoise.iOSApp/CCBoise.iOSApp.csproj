@@ -118,6 +118,7 @@
     <BundleResource Include="Resources\icon50.png" />
     <BundleResource Include="Resources\icon58.png" />
     <Content Include="Images\TabIcons\18-envelope.png" />
+    <Content Include="Images\TabIcons\53-house.png" />
     <Content Include="Images\TabIcons\55-network.png" />
     <Content Include="Images\TabIcons\60-signpost.png" />
     <Content Include="Images\TabIcons\83-calendar.png" />
