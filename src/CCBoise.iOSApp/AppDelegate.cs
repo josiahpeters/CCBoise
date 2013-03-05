@@ -6,6 +6,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.Dialog;
 using System.IO;
+using CCBoise.Data;
 
 namespace CCBoise.iOSApp
 {
@@ -32,6 +33,17 @@ namespace CCBoise.iOSApp
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            WebApi api = new WebApi(new iOSWebRequest());
+
+            api.GetElements("video", (data) => 
+            {
+                foreach (var video in data)
+                {
+
+                }
+            });
+
+
             JsonElement.RegisterElementMapping("htmlstring", (json, data) =>
             {
                 var caption = GetString(json, "caption");
@@ -76,9 +88,9 @@ namespace CCBoise.iOSApp
 
                 var jsonElement = JsonElement.FromJson(section);
 
-                var videos = jsonElement["videos"] as RootElement;
-                if(videos != null)
-                    videos.Add(videoElements);
+                //var videos = jsonElement["videos"] as RootElement;
+                //if(videos != null)
+                //    videos.Add(videoElements);
 
 
                 tab.PushViewController(new DialogViewController(jsonElement), false);

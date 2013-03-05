@@ -23,13 +23,20 @@ namespace CCBoise.Core
         public string Description { get; set; }
         public string SiteUrl { get; set; }
 
-        private Dictionary<string, object> items;
+        private Dictionary<string, object> items = new Dictionary<string,object>();
 
         public object this[string key]
         {
             get
             {
-                return items[key];
+                if (items.ContainsKey(key))
+                    return items[key];
+                else
+                    return null;
+            }
+            set
+            {
+                items[key] = value;
             }
         }
     }

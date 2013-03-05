@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 //using System.Net;
 using System.IO;
+using System.Json;
 
 namespace CCBoise.Data
 {
@@ -18,14 +19,44 @@ namespace CCBoise.Data
         {
             webRequest.GetUrl(endpoints["video"].Url, (data, error) =>
             {
-                var json = JsonValue.Load(new StreamReader(data)) as JsonObject;
+                List<ApiElement> elements = new List<ApiElement>();
 
+                var sr = new StreamReader(data);
+
+                var dt = sr.ReadToEnd();
+
+                var json = JsonValue.Parse(dt) as JsonObject;
+
+                var nodes = json["nodes"] as JsonArray;
+
+                foreach(JsonObject node in nodes)
+                {
+                    var element = node["node"] as JsonObject;
+
+                    var apiElement = new ApiElement()
+                    {
+                        Id = element["id"].ToString(),
+                        Title = element["title"].ToString(),
+                        Description = element["description"].ToString(),
+                        SiteUrl = element["siteUrl"].ToString()
+                    };
+
+                    foreach (var key in element.Keys)
+                    {
+                        apiElement[key] = element[key].ToString();
+                    }
+
+                    elements.Add(apiElement);
+                }
+
+                callback(elements);
+                // nodes
+                    // [0].node
+                        // id
             });
-            
-
         }
 
-        public GetElementDetail(string name, string identifier, Action<List<ApiElement>> callback)
+        public void GetElementDetail(string name, string identifier, Action<List<ApiElement>> callback)
         {
             throw new NotImplementedException();
         }
