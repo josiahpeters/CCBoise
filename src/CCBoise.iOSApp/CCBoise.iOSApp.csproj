@@ -109,7 +109,6 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <BundleResource Include="Resources\icon57.png" />
     <BundleResource Include="Resources\icon114.png" />
@@ -129,6 +128,7 @@
     <ITunesArtwork Include="ITunesArtwork" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="iOSWebRequest.cs" />
     <Compile Include="MonoTouchUI\HtmlStringElement.cs" />
     <Compile Include="MonoTouchUI\ImageTitleDescriptionElement.cs" />
     <Compile Include="Main.cs" />

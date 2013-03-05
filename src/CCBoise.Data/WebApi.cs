@@ -12,18 +12,28 @@ namespace CCBoise.Data
     {
         private Dictionary<string, WebApiEndpoint> endpoints;
 
-        public List<ApiElement> GetElements(string name)
+        private IWebRequest webRequest;
+
+        public void GetElements(string name, Action<List<ApiElement>> callback)
+        {
+            webRequest.GetUrl(endpoints["video"].Url, (data, error) =>
+            {
+                var json = JsonValue.Load(new StreamReader(data)) as JsonObject;
+
+            });
+            
+
+        }
+
+        public GetElementDetail(string name, string identifier, Action<List<ApiElement>> callback)
         {
             throw new NotImplementedException();
         }
 
-        public List<ApiElement> GetElementDetail(string name, string identifier)
+        public WebApi(IWebRequest webRequest)
         {
-            throw new NotImplementedException();
-        }
+            this.webRequest = webRequest;
 
-        public WebApi()
-        {
             endpoints = new Dictionary<string, WebApiEndpoint>()
             {
                 { "video", new WebApiEndpoint { Name = "video", Url = "http://www.ccboise.org/api/messages/video" } },
@@ -33,7 +43,7 @@ namespace CCBoise.Data
                 { "events", new WebApiEndpoint { Name = "events", Url = "http://www.ccboise.org/api/connect/events" } },
                 { "calendar", new WebApiEndpoint { Name = "calendar", Url = "http://www.ccboise.org/api/connect/calendar", ItemUrl = "http://www.ccboise.org/api/connect/calendar-event/{ItemId}" } },
             };
-        }
+        }        
 
         private string getUrlContent(string url)
         {

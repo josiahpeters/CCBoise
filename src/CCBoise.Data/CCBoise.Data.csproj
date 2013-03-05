@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>12.0.0</ProductVersion>
+    <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{770D6F86-B2C7-4633-A69E-C51140031971}</ProjectGuid>
+    <ProjectGuid>{89DC061B-1853-4100-AADF-EC051F4A21C0}</ProjectGuid>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>CCBoise.Data</RootNamespace>
@@ -40,14 +40,14 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="WebApi.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="CCBoise.js" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CCBoise.Core\CCBoise.Core.csproj">
-      <Project>{CEBA2C79-3D87-4898-BD08-8364B3A8C9C2}</Project>
+      <Project>{c99da1d4-5b1d-4388-b2b2-e2f8451479f6}</Project>
       <Name>CCBoise.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="CCBoise.js" />
-  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
