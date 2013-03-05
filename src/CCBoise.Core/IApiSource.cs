@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Json;
 using System.Linq;
 using System.Text;
 
@@ -14,6 +15,10 @@ namespace CCBoise.Core
     public interface IWebRequest
     {
         void GetUrl(string url, Action<Stream, Exception> callback);
+    }
+    public interface IHelper
+    {
+        string GetString(JsonValue obj, string key);
     }
 
     public class ApiElement

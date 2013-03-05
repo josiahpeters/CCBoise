@@ -32,16 +32,16 @@
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="IApiSource.cs" />
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataEndpoints.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Json">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoTouch\v4.0\System.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

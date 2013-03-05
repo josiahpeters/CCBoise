@@ -32,14 +32,6 @@
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Json">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoTouch\v4.0\System.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="WebApi.cs" />
   </ItemGroup>
@@ -51,6 +43,11 @@
       <Project>{c99da1d4-5b1d-4388-b2b2-e2f8451479f6}</Project>
       <Name>CCBoise.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Json">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoTouch\v4.0\System.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

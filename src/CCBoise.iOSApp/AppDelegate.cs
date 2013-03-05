@@ -33,16 +33,7 @@ namespace CCBoise.iOSApp
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            WebApi api = new WebApi(new iOSWebRequest());
-
-            api.GetElements("video", (data) => 
-            {
-                foreach (var video in data)
-                {
-
-                }
-            });
-
+            WebApi api = new WebApi(new iOSWebRequest(), new Helper());
 
             JsonElement.RegisterElementMapping("htmlstring", (json, data) =>
             {
@@ -77,6 +68,8 @@ namespace CCBoise.iOSApp
 
             var tabs = new List<UIViewController>();
 
+            RootElement videoElement = null;
+
             foreach (JsonObject section in sections)
             {
                 var tab = new UINavigationController();
@@ -88,8 +81,9 @@ namespace CCBoise.iOSApp
 
                 var jsonElement = JsonElement.FromJson(section);
 
-                //var videos = jsonElement["videos"] as RootElement;
-                //if(videos != null)
+                var videos = jsonElement["videos"] as RootElement;
+                if(videos != null)
+                    videoElement = videos;
                 //    videos.Add(videoElements);
 
 
@@ -97,6 +91,16 @@ namespace CCBoise.iOSApp
 
                 tabs.Add(tab);
             }
+
+            api.GetElements("video", (data) => 
+            {
+                var videoSections = new Section ("");
+                videoElement.Add(videoSections);
+                foreach (var video in data)
+                {
+                    videoSections.Add(new DetailedImageElement(video["thumbnailSml"].ToString(), video.Title, video.Description));
+                }
+            });
 
             navigation = new UITabBarController();
             navigation.ViewControllers = tabs.ToArray();

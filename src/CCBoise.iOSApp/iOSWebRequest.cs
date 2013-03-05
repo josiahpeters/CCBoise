@@ -3,18 +3,31 @@ using MonoTouch.Foundation;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Json;
 using System.Linq;
 using System.Text;
 
 namespace CCBoise.iOSApp
 {
+    class Helper : IHelper
+    {
+
+        public string GetString(JsonValue obj, string key)
+        {
+            if (obj.ContainsKey(key))
+                if (obj[key].JsonType == JsonType.String)
+                    return (string)obj[key];
+            return null;
+        }
+    }
+
     class iOSWebRequest : IWebRequest
-    {        
+    {
         public void GetUrl(string url, Action<Stream, Exception> callback)
         {
             var request = new NSUrlRequest(new NSUrl(url), NSUrlRequestCachePolicy.UseProtocolCachePolicy, 60);
             var connection = new NSUrlConnection(request, new ConnectionDelegate((data, error) =>
-            {                
+            {
                 if (error == null)
                 {
                     callback(data, null);

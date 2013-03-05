@@ -131,7 +131,7 @@
   <ItemGroup>
     <Compile Include="..\CCBoise.iOSApp\iOSWebRequest.cs" />
     <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\HtmlStringElement.cs" />
-    <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\ImageTitleDescriptionElement.cs" />
+    <Compile Include="MonoTouchUI\DetailedImageElement.cs" />
     <Compile Include="..\CCBoise.iOSApp\Main.cs" />
     <Compile Include="..\CCBoise.iOSApp\AppDelegate.cs" />
     <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\DetailedImageCell.cs" />

@@ -14,6 +14,7 @@ namespace CCBoise.Data
         private Dictionary<string, WebApiEndpoint> endpoints;
 
         private IWebRequest webRequest;
+        private IHelper helper;
 
         public void GetElements(string name, Action<List<ApiElement>> callback)
         {
@@ -35,15 +36,15 @@ namespace CCBoise.Data
 
                     var apiElement = new ApiElement()
                     {
-                        Id = element["id"].ToString(),
-                        Title = element["title"].ToString(),
-                        Description = element["description"].ToString(),
-                        SiteUrl = element["siteUrl"].ToString()
+                        Id = helper.GetString(element, "id"),
+                        Title = helper.GetString(element, "title"),
+                        Description = helper.GetString(element, "description"),
+                        SiteUrl = helper.GetString(element, "siteURL")
                     };
 
                     foreach (var key in element.Keys)
                     {
-                        apiElement[key] = element[key].ToString();
+                        apiElement[key] = helper.GetString(element, key);
                     }
 
                     elements.Add(apiElement);
@@ -56,14 +57,17 @@ namespace CCBoise.Data
             });
         }
 
+        
+
         public void GetElementDetail(string name, string identifier, Action<List<ApiElement>> callback)
         {
             throw new NotImplementedException();
         }
 
-        public WebApi(IWebRequest webRequest)
+        public WebApi(IWebRequest webRequest, IHelper helper)
         {
             this.webRequest = webRequest;
+            this.helper = helper;
 
             endpoints = new Dictionary<string, WebApiEndpoint>()
             {
