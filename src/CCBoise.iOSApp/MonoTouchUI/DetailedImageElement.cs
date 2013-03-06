@@ -1,4 +1,6 @@
-﻿using MonoTouch.CoreGraphics;
+﻿using CCBoise.Core;
+using CCBoise.iOSApp.MonoTouchUI;
+using MonoTouch.CoreGraphics;
 using MonoTouch.Dialog;
 using MonoTouch.Dialog.Utilities;
 using MonoTouch.Foundation;
@@ -19,6 +21,8 @@ namespace CCBoise.iOSApp
         string title;
         string detail;
 
+        ApiElement apiElement;
+
         public event NSAction Tapped;
 
         public DetailedImageElement(string imageUri, string title, string detail)
@@ -27,6 +31,15 @@ namespace CCBoise.iOSApp
             this.imgUrl = imageUri;
             this.title = title;
             this.detail = detail;
+        }
+
+        public DetailedImageElement(ApiElement apiElement)
+            : base(apiElement.Title)
+        {
+            this.imgUrl = apiElement["thumbnailSml"].ToString();
+            this.title = apiElement.Title;
+            this.detail = apiElement.Description;
+            this.apiElement = apiElement;
         }
 
         public override UITableViewCell GetCell(UITableView tv)
@@ -52,12 +65,22 @@ namespace CCBoise.iOSApp
         {
             return 110f;
         }
-
+        
         public override void Selected(DialogViewController dvc, UITableView tableView, NSIndexPath path)
         {
             if (Tapped != null)
                 Tapped();
             tableView.DeselectRow(path, true);
-        }        
+
+            //MPMoviePlayerController 
+            var url = apiElement.SiteUrl;
+
+            if (apiElement["videoSrc2"] != null)
+                url = apiElement["videoSrc2"].ToString();
+
+            var videoController = new UIVideoController(url);
+
+            dvc.ActivateController(videoController);
+        }
     }
 }

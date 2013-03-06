@@ -26,9 +26,22 @@ namespace CCBoise.Core
         public string Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string DetailJsonUrl { get; set; }
         public string SiteUrl { get; set; }
+        public string Type { get; set; }
 
-        private Dictionary<string, object> items = new Dictionary<string,object>();
+        public List<ApiElement> Children { get; set; }
+
+        private Dictionary<string, object> items;
+
+        public List<object> Values()
+        {
+            return items.Values.ToList();
+        }
+        public List<string> Keys()
+        {
+            return items.Keys.ToList();
+        }
 
         public object this[string key]
         {
@@ -43,6 +56,12 @@ namespace CCBoise.Core
             {
                 items[key] = value;
             }
+        }
+
+        public ApiElement()
+        {
+            items = new Dictionary<string, object>();
+            Children = new List<ApiElement>();
         }
     }
 }

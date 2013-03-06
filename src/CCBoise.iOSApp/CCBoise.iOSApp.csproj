@@ -117,6 +117,7 @@
     <Content Include="..\CCBoise.iOSApp\Images\TabIcons\83-calendar.png" />
     <Content Include="..\CCBoise.iOSApp\MonoTouch.Dialog.dll" />
     <Content Include="..\CCBoise.iOSApp\MonoTouch.Dialog.pdb" />
+    <Content Include="sample.m4v" />
     <None Include="..\CCBoise.iOSApp\Info.plist" />
     <Content Include="..\CCBoise.iOSApp\Json\video.js" />
     <ITunesArtwork Include="..\CCBoise.iOSApp\ITunesArtwork" />
@@ -131,11 +132,15 @@
   <ItemGroup>
     <Compile Include="..\CCBoise.iOSApp\iOSWebRequest.cs" />
     <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\HtmlStringElement.cs" />
+    <Compile Include="MonoTouchUI\CustomJsonElement.cs" />
     <Compile Include="MonoTouchUI\DetailedImageElement.cs" />
     <Compile Include="..\CCBoise.iOSApp\Main.cs" />
     <Compile Include="..\CCBoise.iOSApp\AppDelegate.cs" />
     <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\DetailedImageCell.cs" />
     <Compile Include="..\CCBoise.iOSApp\NavViewController.cs" />
+    <Compile Include="MonoTouchUI\UIVideoController.cs" />
+    <Compile Include="MonoTouchUI\VideoElement.cs" />
+    <Compile Include="MonoTouchUI\WebViewCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
