@@ -60,6 +60,39 @@ namespace CCBoise.iOSApp.MonoTouchUI
                 spinner.StopAnimating();
                 spinner.RemoveFromSuperview();
 
+
+
+                if (apiElements.Count == 1)
+                {
+                    var element = apiElements.First();
+
+                    if (element["content"] != null)
+                    {
+                        var html = element["content"].ToString();
+                        UIWebView webView = new UIWebView(UIScreen.MainScreen.Bounds)
+                        {
+                            BackgroundColor = UIColor.Clear,// UIColor.White,
+                            ScalesPageToFit = false,
+                            AutoresizingMask = UIViewAutoresizing.All
+                        };
+
+                        webView.LoadHtmlString(html, null);
+
+
+                        var wc = new UIViewController();
+
+                        wc.NavigationItem.Title = Caption;
+
+                        wc.View.AutosizesSubviews = true;
+                        wc.View.AddSubview(webView);
+
+                        PrepareDialogViewController(wc);
+                        dvc.ActivateController(wc);
+
+                        return;
+                    }
+                }
+
                 foreach (var element in apiElements)
                 {
                     section.Add(BuildElement(element));
@@ -74,18 +107,9 @@ namespace CCBoise.iOSApp.MonoTouchUI
                 PrepareDialogViewController(newDvc);
                 dvc.ActivateController(newDvc);
 
-                if (webResetEvent != null)
-                {
-                    webResetEvent.WaitOne(500);
-                    webResetEvent = null;
-                }
-
                 return;
             }));
         }
-
-        ManualResetEvent webResetEvent = null;
-
 
         Element BuildElement(ApiElement element)
         {
@@ -94,19 +118,9 @@ namespace CCBoise.iOSApp.MonoTouchUI
             {
                 return new DetailedImageElement(element);
             }
-            if (element["content"] != null)
+            if (element["content"] != null || element.DetailJsonUrl != null)
             {
-                webResetEvent = new ManualResetEvent(true);
-
-                webResetEvent.Set();
-
-                var html = element["content"].ToString();
-
-                UIWebView webView = new UIWebView();
-                webView.LoadFinished += LoadingFinished;
-                webView.LoadHtmlString(html, new NSUrl("HtmlContent/", true));
-
-                return new HtmlStringElement(element.Id, html, webView);
+                return new HtmlStringElement(element.Id, element["content"].ToString());
             }
 
             var root = new CustomJsonElement(element);
@@ -137,11 +151,6 @@ namespace CCBoise.iOSApp.MonoTouchUI
             cell.Accessory = UITableViewCellAccessory.None;
 
             return spinner;
-        }
-
-        public void LoadingFinished(object source, EventArgs e)
-        {
-            //webResetEvent.Set();
         }
     }
 
