@@ -4,6 +4,7 @@
 		{
 		    "title": "Messages",
 		    "icon": "Images/TabIcons/18-envelope.png",
+		    "id": "messages",
 		    "sections": [
                 {
                     "elements": [
@@ -12,7 +13,7 @@
                             "id": "videos",
                             "type": "root",
                             "sections": [
-									            	                
+							                
                             ]
                         },
                         {
@@ -36,6 +37,7 @@
                     "elements": [
                         {
                             "title": "Pathway Devotions",
+                            "id": "daily",
                             "type": "root",
                             "elements": [
                             ]

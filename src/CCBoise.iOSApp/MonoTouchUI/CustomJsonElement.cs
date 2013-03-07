@@ -76,7 +76,12 @@ namespace CCBoise.iOSApp.MonoTouchUI
                             AutoresizingMask = UIViewAutoresizing.All
                         };
 
-                        webView.LoadHtmlString(html, null);
+                        if (!html.Contains("<html"))
+                        {
+                            html = String.Format("<html><head><link href=\"main.css\" rel=\"stylesheet\" type=\"text/css\" /></head><body><h1>{0}</h1>{1}</body><html>", element.Title, html);
+                        }
+
+                        webView.LoadHtmlString(html, new NSUrl("HtmlContent/", true));
 
 
                         var wc = new UIViewController();
