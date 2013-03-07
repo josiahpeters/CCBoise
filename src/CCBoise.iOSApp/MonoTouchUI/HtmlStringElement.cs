@@ -30,7 +30,7 @@ namespace CCBoise.iOSApp
                 this.html = String.Format("<html><head><link href=\"main.css\" rel=\"stylesheet\" type=\"text/css\" /></head><body><h1>{0}</h1>{1}</body><html>", caption, html);
             }
             else
-                this.html = html;
+                this.html = html; 
         }
 
         public override UITableViewCell GetCell(UITableView tv)
