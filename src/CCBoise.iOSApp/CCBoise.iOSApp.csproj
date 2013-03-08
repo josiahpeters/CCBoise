@@ -126,7 +126,7 @@
     <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-et-icon.png" />
     <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-sunday-icon.png" />
     <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-voices-icon.png" />
-    <Content Include="Json\CCBoise2.js" />
+    <Content Include="Json\CCBoise.js" />
     <Content Include="HtmlContent\main-style.css" />
   </ItemGroup>
   <ItemGroup>

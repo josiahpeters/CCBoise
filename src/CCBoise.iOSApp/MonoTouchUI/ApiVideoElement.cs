@@ -32,12 +32,13 @@ namespace CCBoise.iOSApp
             }
 
 
-            if (!html.Contains("<html"))
+            if (html != null && !html.Contains("<html"))
             {
                 html = String.Format("<html><head><link href=\"main-style.css\" rel=\"stylesheet\" type=\"text/css\" /></head><body><h1>{0}</h1>{1}</body><html>", apiNode.Title, html);
             }
 
-            webView.LoadHtmlString(html, new NSUrl("HtmlContent/", true));
+            if (html != null)
+                webView.LoadHtmlString(html, new NSUrl("HtmlContent/", true));
 
 
             vc.NavigationItem.Title = apiNode.Title;

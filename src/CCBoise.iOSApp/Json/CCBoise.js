@@ -84,7 +84,7 @@
                         {
                             "title": "Events",
                             "type": "customRoot",
-                            "childtype":"htmlContent",
+                            "childType":"htmlContent",
                             "contentNode":"eventDescription",
                             "apiUrl":"http://www.ccboise.org/api/connect/events",
                             "sections": [
@@ -93,7 +93,7 @@
                         },
                         {
                             "title": "Calendar",
-                            "type": "customroot",
+                            "type": "customRoot",
                             "childType":"htmlContent",
                             "contentNode":"description",
                             "apiUrl":"http://www.ccboise.org/api/connect/calendar",

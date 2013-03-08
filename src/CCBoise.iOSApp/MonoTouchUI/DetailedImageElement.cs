@@ -104,22 +104,9 @@ namespace CCBoise.iOSApp
 
                     var contentApiNode = apiNodes.First();
 
-                    //string childType = apiNode["childType"];
-
-                    //if (this.Count == 0)
-                    //    Add(new Section(""));
-
-                    //foreach (var element in apiNodes)
-                    //{
-                    //    this[0].Add(CreateElement(element, apiNode));
-                    //}
-
-                    //var newDvc = new DialogViewController(this, true)
-                    //{
-                    //    Autorotate = true
-                    //};
-                    //PrepareDialogViewController(newDvc);
-                    //dvc.ActivateController(newDvc);
+                    // make sure that we get the content mapping from the parent node, so we know which field to map content to if its not "content"
+                    if (apiNode["contentNode"] != null)
+                        contentApiNode["contentNode"] = apiNode["contentNode"];
 
                     dvc.ActivateController(createOnSelected(contentApiNode));
 

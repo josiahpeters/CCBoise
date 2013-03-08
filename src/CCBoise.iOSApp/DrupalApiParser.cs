@@ -17,6 +17,7 @@ namespace CCBoise.iOSApp
 
             var dt = sr.ReadToEnd();
 
+
             List<ApiNode> apiNodes = new List<ApiNode>();
 
             var json = JsonValue.Parse(dt) as JsonObject;
