@@ -10,8 +10,9 @@
                     "elements": [
                         {
                             "title": "Video",
-                            "id": "videos",
-                            "type": "root",
+                            "type": "customroot",
+                            "childtype":"video",
+                            "url":"http://www.ccboise.org/api/messages/video",
                             "sections": [
 							                
                             ]
@@ -37,14 +38,18 @@
                     "elements": [
                         {
                             "title": "Pathway Devotions",
-                            "id": "daily",
-                            "type": "root",
+                            "type": "customroot",
+                            "childtype":"htmlcontent",
+                            "contentnode":"content",
+                            "url":"http://www.ccboise.org/api/daily/devotionals",
+                            "childUrl":"http://www.ccboise.org/api/daily/devotional/{0}",
                             "elements": [
                             ]
                         },
                         {
                             "title": "Prayer Task Force",
-                            "type": "root",
+                            "type": "customroot",                            
+                            "url":"http://www.ccboise.org/api/daily/prayer",
                             "elements": [
                             ]
                         }
@@ -75,13 +80,19 @@
                     "elements": [
                         {
                             "title": "Events",
-                            "type": "root",
-                            "elements": [
+                            "type": "customroot",
+                            "url":"http://www.ccboise.org/api/connect/events",
+                            "sections": [
+							                
                             ]
                         },
                         {
                             "title": "Calendar",
-                            "type": "root",
+                            "type": "customroot",
+                            "childtype":"htmlcontent",
+                            "contentnode":"description",
+                            "url":"http://www.ccboise.org/api/connect/calendar",
+                            "childUrl":"http://www.ccboise.org/api/connect/calendar-event/{0}",
                             "elements": [
                             ]
                         },

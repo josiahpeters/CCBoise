@@ -54,6 +54,15 @@ namespace CCBoise.iOSApp
                 return new DetailedImageElement(imageUri, title, detail);
             });
 
+            JsonElement.RegisterElementMapping("customroot", (json, data) =>
+            {
+                var title = GetString(json, "title");
+                var url = GetString(json, "url");
+                var childurl = GetString(json, "childUrl");
+
+                return new CustomJsonElement(new ApiElement { Title = title, SiteUrl = url, DetailJsonUrl = childurl });
+            });
+
 
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 
@@ -67,8 +76,6 @@ namespace CCBoise.iOSApp
 
             var tabs = new List<UIViewController>();
 
-            RootElement videoElement = null;
-
             foreach (JsonObject section in sections)
             {
                 var tab = new UINavigationController();
@@ -76,17 +83,23 @@ namespace CCBoise.iOSApp
                 string title = (string)section["title"];
                 string icon = (string)section["icon"];
 
+                //string id = null;
+                //    if(section.ContainsKey("id"))
+                //        id = (string)section["id"];
+
                 tab.TabBarItem = new UITabBarItem(title, UIImage.FromFile(icon), 1);
 
-                var jsonElement = JsonElement.FromJson(section);
+                var jsonElement = JsonElement.FromJson(section) ;
 
-                var messages = jsonElement["messages"] as RootElement;
-                if (messages != null)
-                    messages[0].Add(new CustomJsonElement(new ApiElement { Title = "Videos", SiteUrl = "http://www.ccboise.org/api/messages/video" }));
+                //if (id != null && id == "messages")
+                //{
+                //    //messages.Add(videoSection);
+                //    jsonElement[0].Add(new CustomJsonElement(new ApiElement { Title = "Videos", SiteUrl = "http://www.ccboise.org/api/messages/video" }));
+                //}
 
-                var daily = jsonElement["daily"] as RootElement;
-                if (daily != null)
-                    daily.Add(new CustomJsonElement(new ApiElement { Title = "Devotions", SiteUrl = "http://www.ccboise.org/api/daily/devotionals", DetailJsonUrl = "http://www.ccboise.org/api/daily/devotional/{0}" }));
+                //var daily = jsonElement["daily"] as RootElement;
+                //if (daily != null)
+                //    daily.Add(new CustomJsonElement(new ApiElement { Title = "Devotions", SiteUrl = "http://www.ccboise.org/api/daily/devotionals", DetailJsonUrl = "http://www.ccboise.org/api/daily/devotional/{0}" }));
 
                 tab.PushViewController(new DialogViewController(jsonElement), false);
 
@@ -99,27 +112,6 @@ namespace CCBoise.iOSApp
             navigation.CustomizableViewControllers = new UIViewController[0];
 
             window.RootViewController = navigation;
-
-            //ApiElement video = new ApiElement { Title = "Videos", SiteUrl = "http://www.ccboise.org/api/messages/video" };
-
-            //var root = new RootElement("CCBoise");
-
-            //var section = new Section("");
-
-            //root.Add(section);
-
-            //section.Add(new CustomJsonElement(new ApiElement { Title = "Videos", SiteUrl = "http://www.ccboise.org/api/messages/video" }));
-            //section.Add(new CustomJsonElement(new ApiElement { Title = "Devotions", SiteUrl = "http://www.ccboise.org/api/daily/devotionals", DetailJsonUrl = "http://www.ccboise.org/api/daily/devotional/{0}" }));
-
-            //var rootController = new DialogViewController(root);
-
-            //window = new UIWindow(UIScreen.MainScreen.Bounds);
-
-            //navigationController = new UINavigationController();
-
-            //navigationController.PushViewController(rootController, false);
-
-            //window.RootViewController = navigationController;
 
             window.MakeKeyAndVisible();
 

@@ -100,7 +100,7 @@ namespace CCBoise.iOSApp.MonoTouchUI
 
                 foreach (var element in apiElements)
                 {
-                    section.Add(BuildElement(element));
+                    section.Add(BuildElement(element, apiElement));
                 }
 
                 root.Add(section);
@@ -116,16 +116,23 @@ namespace CCBoise.iOSApp.MonoTouchUI
             }));
         }
 
-        Element BuildElement(ApiElement element)
+        Element BuildElement(ApiElement element, ApiElement parent = null)
         {
+            if (element["childtype"] != null)
+            {
+                string childType = element["childtype"].ToString();
 
-            if (element["videoSrc1"] != null)
-            {
-                return new DetailedImageElement(element);
-            }
-            if (element["content"] != null || element.DetailJsonUrl != null)
-            {
-                return new HtmlStringElement(element.Id, element["content"].ToString());
+                switch (childType)
+                {
+                    case "video":
+                        return new DetailedImageElement(element);
+                    case "htmlcontent":
+                        string contentKey = "content";
+                        if (element["contentnode"] != null)
+                            contentKey = element["childtype"].ToString();
+                        return new HtmlStringElement(element.Id, element[contentKey].ToString());
+                }
+
             }
 
             var root = new CustomJsonElement(element);
@@ -135,7 +142,7 @@ namespace CCBoise.iOSApp.MonoTouchUI
 
             foreach (var child in element.Children)
             {
-                section.Add(BuildElement(child));
+                section.Add(BuildElement(child, element));
             }
             root.Add(section);
 
