@@ -32,6 +32,7 @@
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ApiNode.cs" />
     <Compile Include="IApiSource.cs" />
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>

@@ -37,37 +37,35 @@ namespace CCBoise.iOSApp
         {
             WebApi api = new WebApi(new iOSWebRequest(), new Helper());
 
-            JsonElement.RegisterElementMapping("htmlstring", (json, data) =>
-            {
-                var caption = GetString(json, "caption");
-                var html = GetString(json, "html");
+            //JsonElement.RegisterElementMapping("htmlstring", (json, data) =>
+            //{
+            //    var caption = GetString(json, "caption");
+            //    var html = GetString(json, "html");
 
-                return new HtmlStringElement(caption, html);
-            });
+            //    return new HtmlStringElement(caption, html);
+            //});
 
-            JsonElement.RegisterElementMapping("detailedImage", (json, data) =>
+            //JsonElement.RegisterElementMapping("detailedImage", (json, data) =>
+            //{
+            //    var imageUri = GetString(json, "imageUri");
+            //    var title = GetString(json, "title");
+            //    var detail = GetString(json, "detail");
+
+            //    return new DetailedImageElement(imageUri, title, detail);
+            //});
+
+            JsonElement.RegisterElementMapping("customRoot", (json, data) =>
             {
-                var imageUri = GetString(json, "imageUri");
                 var title = GetString(json, "title");
-                var detail = GetString(json, "detail");
 
-                return new DetailedImageElement(imageUri, title, detail);
-            });
-
-            JsonElement.RegisterElementMapping("customroot", (json, data) =>
-            {
-                var title = GetString(json, "title");
-                var url = GetString(json, "url");
-                var childurl = GetString(json, "childUrl");
-
-                return new CustomJsonElement(new ApiElement { Title = title, SiteUrl = url, DetailJsonUrl = childurl });
+                return new CustomRootElement(title, json);
             });
 
 
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             JsonObject rootJson;
-            using (var reader = File.OpenRead("Json/CCBoise.js"))
+            using (var reader = File.OpenRead("Json/CCBoise2.js"))
             {
                 rootJson = JsonObject.Load(reader) as JsonObject;
             }
@@ -83,23 +81,9 @@ namespace CCBoise.iOSApp
                 string title = (string)section["title"];
                 string icon = (string)section["icon"];
 
-                //string id = null;
-                //    if(section.ContainsKey("id"))
-                //        id = (string)section["id"];
-
                 tab.TabBarItem = new UITabBarItem(title, UIImage.FromFile(icon), 1);
 
-                var jsonElement = JsonElement.FromJson(section) ;
-
-                //if (id != null && id == "messages")
-                //{
-                //    //messages.Add(videoSection);
-                //    jsonElement[0].Add(new CustomJsonElement(new ApiElement { Title = "Videos", SiteUrl = "http://www.ccboise.org/api/messages/video" }));
-                //}
-
-                //var daily = jsonElement["daily"] as RootElement;
-                //if (daily != null)
-                //    daily.Add(new CustomJsonElement(new ApiElement { Title = "Devotions", SiteUrl = "http://www.ccboise.org/api/daily/devotionals", DetailJsonUrl = "http://www.ccboise.org/api/daily/devotional/{0}" }));
+                var jsonElement = JsonElement.FromJson(section);
 
                 tab.PushViewController(new DialogViewController(jsonElement), false);
 

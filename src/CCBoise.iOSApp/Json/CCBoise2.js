@@ -10,11 +10,12 @@
                     "elements": [
                         {
                             "title": "Video",
-                            "type": "customroot",
-                            "childtype":"video",
-                            "url":"http://www.ccboise.org/api/messages/video",
+                            "type": "customRoot",
+                            "childType":"detailedImage",
+                            "childAction":"video",
+                            "apiUrl":"http://www.ccboise.org/api/messages/video",
                             "sections": [
-							                
+							
                             ]
                         },
                         {
@@ -38,18 +39,20 @@
                     "elements": [
                         {
                             "title": "Pathway Devotions",
-                            "type": "customroot",
-                            "childtype":"htmlcontent",
-                            "contentnode":"content",
-                            "url":"http://www.ccboise.org/api/daily/devotionals",
-                            "childUrl":"http://www.ccboise.org/api/daily/devotional/{0}",
+                            "type": "customRoot",
+                            "childType":"htmlContent",
+                            "contentNode":"content",
+                            "apiUrl":"http://www.ccboise.org/api/daily/devotionals",
+                            "apiItemUrl":"http://www.ccboise.org/api/daily/devotional/{0}",
                             "elements": [
                             ]
                         },
                         {
                             "title": "Prayer Task Force",
-                            "type": "customroot",                            
-                            "url":"http://www.ccboise.org/api/daily/prayer",
+                            "type": "customRoot",                       
+                            "childType":"htmlContent",
+                            "contentNode":"description",
+                            "apiUrl":"http://www.ccboise.org/api/daily/prayer",
                             "elements": [
                             ]
                         }
@@ -80,8 +83,10 @@
                     "elements": [
                         {
                             "title": "Events",
-                            "type": "customroot",
-                            "url":"http://www.ccboise.org/api/connect/events",
+                            "type": "customRoot",
+                            "childtype":"htmlContent",
+                            "contentNode":"eventDescription",
+                            "apiUrl":"http://www.ccboise.org/api/connect/events",
                             "sections": [
 							                
                             ]
@@ -89,10 +94,10 @@
                         {
                             "title": "Calendar",
                             "type": "customroot",
-                            "childtype":"htmlcontent",
-                            "contentnode":"description",
-                            "url":"http://www.ccboise.org/api/connect/calendar",
-                            "childUrl":"http://www.ccboise.org/api/connect/calendar-event/{0}",
+                            "childType":"htmlContent",
+                            "contentNode":"description",
+                            "apiUrl":"http://www.ccboise.org/api/connect/calendar",
+                            "apiItemUrl":"http://www.ccboise.org/api/connect/calendar-event/{0}",
                             "elements": [
                             ]
                         },

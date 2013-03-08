@@ -1,4 +1,5 @@
 ﻿using CCBoise.Core;
+
 using CCBoise.Data;
 using MonoTouch.Dialog;
 using MonoTouch.Foundation;
@@ -50,7 +51,7 @@ namespace CCBoise.iOSApp.MonoTouchUI
 
             var connection = new NSUrlConnection(request, new ConnectionDelegate((data, error) =>
             {
-                var apiElements = DrupalApiParser.ParseJsonStream(data, apiElement);
+                var apiElements = new List<ApiElement>();//DrupalApiParser.ParseJsonStream(data, apiElement);
 
                 var root = new RootElement(apiElement.Title);
 
@@ -165,55 +166,6 @@ namespace CCBoise.iOSApp.MonoTouchUI
             return spinner;
         }
     }
-
-    public class DrupalApiParser
-    {
-        public static List<ApiElement> ParseJsonStream(Stream jsonStream, ApiElement parent)
-        {
-            List<ApiElement> elements = new List<ApiElement>();
-
-            var sr = new StreamReader(jsonStream);
-
-            var dt = sr.ReadToEnd();
-
-            var json = JsonValue.Parse(dt) as JsonObject;
-
-            var nodes = json["nodes"] as JsonArray;
-
-            foreach (JsonObject node in nodes)
-            {
-                var element = node["node"] as JsonObject;
-
-                var apiElement = new ApiElement()
-                {
-                    Id = GetString(element, "id"),
-                    Title = GetString(element, "title"),
-                    Description = GetString(element, "description"),
-                    SiteUrl = GetString(element, "siteURL")
-                };
-
-                if (parent.DetailJsonUrl != null)
-                    apiElement.SiteUrl = String.Format(parent.DetailJsonUrl, apiElement.Id);
-
-                foreach (var key in element.Keys)
-                {
-                    apiElement[key] = GetString(element, key);
-                }
-
-                elements.Add(apiElement);
-            }
-
-            return elements;
-        }
-        public static string GetString(JsonValue obj, string key)
-        {
-            if (obj.ContainsKey(key))
-                if (obj[key].JsonType == JsonType.String)
-                    return (string)obj[key];
-            return null;
-        }
-    }
-
     class ConnectionDelegate : NSUrlConnectionDelegate
     {
         Action<Stream, NSError> callback;

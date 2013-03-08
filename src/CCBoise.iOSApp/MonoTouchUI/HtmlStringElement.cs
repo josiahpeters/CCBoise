@@ -65,7 +65,7 @@ namespace CCBoise.iOSApp
                 AutoresizingMask = UIViewAutoresizing.All
             };
 
-            webView.LoadHtmlString(html, new NSUrl("HtmlContent/", true));
+            webView.LoadHtmlString(html, new NSUrl("HtmlContent", true));
 
             vc.NavigationItem.Title = Caption;
 

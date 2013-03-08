@@ -126,20 +126,22 @@
     <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-et-icon.png" />
     <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-sunday-icon.png" />
     <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-voices-icon.png" />
-    <Content Include="Json\CCBoise.js" />
-    <Content Include="..\CCBoise.iOSApp\HtmlContent\main.css" />
+    <Content Include="Json\CCBoise2.js" />
+    <Content Include="HtmlContent\main-style.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CCBoise.iOSApp\iOSWebRequest.cs" />
     <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\HtmlStringElement.cs" />
+    <Compile Include="DrupalApiParser.cs" />
     <Compile Include="MonoTouchUI\CustomJsonElement.cs" />
+    <Compile Include="MonoTouchUI\CustomRootElement.cs" />
     <Compile Include="MonoTouchUI\DetailedImageElement.cs" />
     <Compile Include="..\CCBoise.iOSApp\Main.cs" />
     <Compile Include="..\CCBoise.iOSApp\AppDelegate.cs" />
     <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\DetailedImageCell.cs" />
     <Compile Include="..\CCBoise.iOSApp\NavViewController.cs" />
     <Compile Include="MonoTouchUI\UIVideoController.cs" />
-    <Compile Include="MonoTouchUI\VideoElement.cs" />
+    <Compile Include="MonoTouchUI\ApiVideoElement.cs" />
     <Compile Include="MonoTouchUI\WebViewCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
