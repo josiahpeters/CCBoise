@@ -110,18 +110,20 @@ namespace CCBoise.iOSApp
 
                     dvc.ActivateController(createOnSelected(contentApiNode));
 
-
                     return;
                 }));
             }
             else
+            {
+                loading = false;
                 dvc.ActivateController(createOnSelected(apiNode));
+            }
         }
     }
     public class DetailedImageElement : Element, IElementSizing
     {
         static NSString ckey = new NSString("detailedImageKey");
-        
+
         string imgUrl = "";
         string title;
         string detail;
@@ -185,7 +187,9 @@ namespace CCBoise.iOSApp
 
         public override void Selected(DialogViewController dvc, UITableView tableView, NSIndexPath path)
         {
-            dvc.ActivateController(createOnSelected(apiNode));
+            var viewController = createOnSelected(apiNode);
+
+            dvc.ActivateController(viewController);
         }
     }
 }
