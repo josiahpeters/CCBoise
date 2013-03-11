@@ -32,6 +32,7 @@ namespace CCBoise.iOSApp
         private Element CreateElement(ApiNode element, ApiNode parentNode)
         {
             string childType = parentNode["childType"];
+            string childAction = parentNode["childAction"];
 
             // if there is an item call for the api, build the url here
             if (parentNode.ApiItemUrl != null)
@@ -40,11 +41,27 @@ namespace CCBoise.iOSApp
             if (parentNode["contentNode"] != null)
                 element["contentNode"] = parentNode["contentNode"];
 
+            Func<ApiNode, UIViewController> selectedAction = null;
+
+
+            switch(childAction)
+            {
+                case "video":
+                    selectedAction = ApiVideoElement.VideoSelected;
+                    break;
+                case "audio":
+                    selectedAction = ApiVideoElement.AudioSelected;
+                    break;
+                default:
+                    selectedAction = ApiVideoElement.HtmlSelected;
+                    break;
+            }
+
             switch (childType)
             {
                 case "detailedImage":
 
-                    return new DetailedImageElement(element, ApiVideoElement.VideoSelected);
+                    return new DetailedImageElement(element, selectedAction);
 
                 case "htmlContent":
 
@@ -52,7 +69,7 @@ namespace CCBoise.iOSApp
                     if(element.Description == null)
                         element.Description = String.Format("{0} - {1}", element["date"], element["reference"]);                   
 
-                    return new ApiDetailElement(element, ApiVideoElement.HtmlSelected);
+                    return new ApiDetailElement(element, selectedAction);
 
                 default:
                     var strElement = new MultilineElement(element.Title, element["description"]);

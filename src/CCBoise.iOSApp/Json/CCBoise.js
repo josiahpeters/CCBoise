@@ -13,6 +13,7 @@
                             "type": "customRoot",
                             "childType":"detailedImage",
                             "childAction":"video",
+                            "contentNode":"videoSrc2",
                             "apiUrl":"http://www.ccboise.org/api/messages/video",
                             "sections": [
 							
@@ -20,10 +21,13 @@
                         },
                         {
                             "title": "Audio",
-                            "type": "root",
-                            "elements": [
-								
-											            	                
+                            "type": "customRoot",
+                            "childType":"htmlContent",
+                            "childAction":"audio",
+                            "contentNode":"src",
+                            "apiUrl":"http://www.ccboise.org/api/messages/audio",
+                            "sections": [
+							
                             ]
                         }
                     ]

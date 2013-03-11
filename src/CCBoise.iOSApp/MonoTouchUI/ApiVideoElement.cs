@@ -26,7 +26,7 @@ namespace CCBoise.iOSApp
 
             var html = apiNode["content"];
 
-            if (html == null && apiNode["contentNode"] != null)
+            if (apiNode["contentNode"] != null)
             {
                 html = apiNode[apiNode["contentNode"]];
             }
@@ -51,13 +51,78 @@ namespace CCBoise.iOSApp
 
         public static UIViewController VideoSelected(ApiNode apiNode)
         {
-            var url = apiNode["videoSrc2"];
+            var url = apiNode["videoSrc1"];
 
-            var videoController = new UIVideoController(url);
+            if (apiNode["contentNode"] != null)
+            {
+                url = apiNode[apiNode["contentNode"]];
+            }
 
-            videoController.NavigationItem.Title = apiNode.Title;
+            //var videoController = new UIVideoController(url);
 
-            return videoController;
+            //videoController.NavigationItem.Title = apiNode.Title;
+
+            //return videoController;
+
+
+            var vc = new UIViewController();
+
+
+            var webView = new UIWebView(UIScreen.MainScreen.Bounds)
+            {
+                BackgroundColor = UIColor.White,
+                ScalesPageToFit = true,
+                AutoresizingMask = UIViewAutoresizing.All
+            };
+
+            var request = new NSUrlRequest(new NSUrl(url), NSUrlRequestCachePolicy.UseProtocolCachePolicy, 60);
+
+            webView.LoadRequest(request);
+
+            vc.NavigationItem.Title = apiNode.Title;
+
+            vc.View.AutosizesSubviews = true;
+            vc.View.AddSubview(webView);
+
+            return vc;
+        }
+
+        public static UIViewController AudioSelected(ApiNode apiNode)
+        {
+            var url = apiNode["videoSrc1"];
+
+            if (apiNode["contentNode"] != null)
+            {
+                url = apiNode[apiNode["contentNode"]];
+            }
+
+            //var videoController = new UIVideoController(url);
+
+            //videoController.NavigationItem.Title = apiNode.Title;
+
+            //return videoController;
+
+
+            var vc = new UIViewController();
+
+
+            var webView = new UIWebView(UIScreen.MainScreen.Bounds)
+            {
+                BackgroundColor = UIColor.White,
+                ScalesPageToFit = true,
+                AutoresizingMask = UIViewAutoresizing.All
+            };
+
+            var request = new NSUrlRequest(new NSUrl(url), NSUrlRequestCachePolicy.UseProtocolCachePolicy, 60);
+
+            webView.LoadRequest(request);
+
+            vc.NavigationItem.Title = apiNode.Title;
+
+            vc.View.AutosizesSubviews = true;
+            vc.View.AddSubview(webView);
+
+            return vc;
         }
     }
 }
