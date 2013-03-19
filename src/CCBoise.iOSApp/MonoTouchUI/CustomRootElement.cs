@@ -43,6 +43,9 @@ namespace CCBoise.iOSApp
 
             Func<ApiNode, UIViewController> selectedAction = null;
 
+            if (element.Title.Contains("&#039;"))
+                element.Title = element.Title.Replace("&#039;","'");
+
 
             switch(childAction)
             {
@@ -102,6 +105,8 @@ namespace CCBoise.iOSApp
 
                 if (this.Count == 0)
                     Add(new Section(""));
+                else
+                    this[0].Clear();
 
                 foreach (var element in apiNodes)
                 {

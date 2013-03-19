@@ -65,6 +65,7 @@ namespace CCBoise.iOSApp
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             JsonObject rootJson;
+            //http://boise.alertsense.com/CCBoise.js
             using (var reader = File.OpenRead("Json/CCBoise.js"))
             {
                 rootJson = JsonObject.Load(reader) as JsonObject;
