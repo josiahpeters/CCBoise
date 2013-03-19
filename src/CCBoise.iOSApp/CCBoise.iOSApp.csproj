@@ -133,6 +133,7 @@
     <Compile Include="..\CCBoise.iOSApp\iOSWebRequest.cs" />
     <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\HtmlStringElement.cs" />
     <Compile Include="DrupalApiParser.cs" />
+    <Compile Include="MonoTouchUI\ActionUrlElement.cs" />
     <Compile Include="MonoTouchUI\ApiDetailElement.cs" />
     <Compile Include="MonoTouchUI\CustomRootElement.cs" />
     <Compile Include="MonoTouchUI\DetailedImageElement.cs" />

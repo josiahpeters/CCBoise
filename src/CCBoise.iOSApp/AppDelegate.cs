@@ -37,6 +37,14 @@ namespace CCBoise.iOSApp
         {
             WebApi api = new WebApi(new iOSWebRequest(), new Helper());
 
+            JsonElement.RegisterElementMapping("actionUrl", (json, data) =>
+            {
+                var caption = GetString(json, "caption");
+                var url = GetString(json, "url");
+
+                return new ActionUrlElement(caption, url);
+            });
+
             //JsonElement.RegisterElementMapping("htmlstring", (json, data) =>
             //{
             //    var caption = GetString(json, "caption");

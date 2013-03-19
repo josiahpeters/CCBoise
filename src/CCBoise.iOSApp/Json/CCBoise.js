@@ -344,8 +344,9 @@
                                     "header": "Phone",
                                     "elements": [
                                         {
-                                            "type": "string",
-                                            "caption": "208.321.7440"
+                                            "type": "actionUrl",
+                                            "caption": "208-321-7440",
+                                            "url": "tel:12083217440"
                                         }
                                     ]
                                 },
@@ -354,24 +355,17 @@
                                     "elements": [
                                         {
                                             "type": "string",
-                                            "caption": "208.321.7440"
+                                            "caption": "208-321-7440"
                                         }
                                     ]
                                 },
                                 {
-                                    "header": "Mailing Address",
+                                    "header": "Address",
                                     "elements": [
                                         {
-                                            "type": "string",
-                                            "caption": "Calvary Chapel Boise"
-                                        },
-                                        {
-                                            "type": "string",
-                                            "caption": "123 Auto Drive"
-                                        },
-                                        {
-                                            "type": "string",
-                                            "caption": "Boise, Idaho 83709"
+                                            "type": "actionUrl",
+                                            "caption": "Calvary Chapel Boise\n123 Auto Drive \nBoise, Idaho 83709",
+                                            "url": "http://maps.apple.com/?q=123+Auto+Drive+Boise,+Idaho+83709"
                                         }
                                     ]
                                 }
