@@ -119,7 +119,6 @@
     <Content Include="..\CCBoise.iOSApp\MonoTouch.Dialog.pdb" />
     <Content Include="sample.m4v" />
     <None Include="..\CCBoise.iOSApp\Info.plist" />
-    <Content Include="..\CCBoise.iOSApp\Json\video.js" />
     <ITunesArtwork Include="..\CCBoise.iOSApp\ITunesArtwork" />
     <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\Placeholder.png" />
     <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-cm-icon.png" />
@@ -141,6 +140,7 @@
     <Compile Include="..\CCBoise.iOSApp\AppDelegate.cs" />
     <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\DetailedImageCell.cs" />
     <Compile Include="..\CCBoise.iOSApp\NavViewController.cs" />
+    <Compile Include="MonoTouchUI\ImageBannerCell.cs" />
     <Compile Include="MonoTouchUI\UIVideoController.cs" />
     <Compile Include="MonoTouchUI\ApiVideoElement.cs" />
     <Compile Include="MonoTouchUI\WebViewCell.cs" />

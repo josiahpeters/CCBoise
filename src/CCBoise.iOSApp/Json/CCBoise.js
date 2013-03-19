@@ -91,9 +91,9 @@
                             "type": "customRoot",
                             "childType":"htmlContent",
                             "contentNode":"eventDescription",
+                            "bannerImgUrl": "imgSrc",
                             "apiUrl":"http://www.ccboise.org/api/connect/events",
                             "sections": [
-							                
                             ]
                         },
                         {

@@ -13,20 +13,71 @@ using System.Text;
 
 namespace CCBoise.iOSApp
 {
+    public class ApiBannerElement : ApiDetailElement, IImageUpdated, IElementSizing
+    {
+        static NSString ckey = new NSString("ApiBannerElement");
+
+        Uri imgUri;
+        UIImage img;
+
+        public ApiBannerElement(ApiNode apiNode, Func<ApiNode, UIViewController> createOnSelected)
+            : base(apiNode, createOnSelected)
+        { }
+
+        public override UITableViewCell GetCell(UITableView tv)
+        {
+            var cell = tv.DequeueReusableCell(ckey);
+            if (cell == null)
+            {
+                cell = new ImageBannerCell(null);
+                cell.SelectionStyle = UITableViewCellSelectionStyle.Blue;
+            }
+
+            if (apiNode["imgSrc"] != null)
+                imgUri = new Uri(apiNode["imgSrc"]);
+
+            var bannerCell = cell as ImageBannerCell;
+
+            img = ImageLoader.DefaultRequestImage(imgUri, this);
+
+            bannerCell.UpdateCell(img);
+
+            cell.SetNeedsDisplay();
+
+            return cell;
+        }
+
+        public void UpdatedImage(Uri uri)
+        {
+            if (uri == null || imgUri == null)
+                return;
+
+            var root = GetImmediateRootElement();
+            if (root == null || root.TableView == null)
+                return;
+            root.TableView.ReloadRows(new NSIndexPath[] { IndexPath }, UITableViewRowAnimation.None);
+        }
+
+        float IElementSizing.GetHeight(UITableView tableView, NSIndexPath indexPath)
+        {
+            // add 10 for the top and bottom margin
+            if (img != null)
+                return img.Size.Height + 10;
+            return 136;
+        }
+    }
 
     public class ApiDetailElement : Element, IElementSizing
     {
         static NSString ckey = new NSString("ApiElement");
 
-        ApiNode apiNode;
+        internal ApiNode apiNode;
         UILineBreakMode LineBreakMode = UILineBreakMode.WordWrap;
 
         string title;
         string detail;
 
-        Func<ApiNode, UIViewController> createOnSelected;
-
-        public event NSAction Tapped;
+        internal Func<ApiNode, UIViewController> createOnSelected;
 
         bool loading = false;
         const int CSIZE = 16;
@@ -55,6 +106,8 @@ namespace CCBoise.iOSApp
             cell.DetailTextLabel.Text = detail;
             cell.DetailTextLabel.LineBreakMode = LineBreakMode;
             cell.DetailTextLabel.Lines = 4;
+
+            //cell.ImageView.Image = UIImage.FromFile("Images/Icons/Placeholder.png");
 
             return cell;
         }

@@ -38,9 +38,13 @@ namespace CCBoise.iOSApp
             if (parentNode.ApiItemUrl != null)
                 element.ApiUrl = String.Format(parentNode.ApiItemUrl, element.Id);
 
+            // copy parent values to the children
             if (parentNode["contentNode"] != null)
                 element["contentNode"] = parentNode["contentNode"];
 
+            if (parentNode["bannerImgUrl"] != null)
+                element["bannerImgUrl"] = parentNode["bannerImgUrl"];
+            
             Func<ApiNode, UIViewController> selectedAction = null;
 
             if (element.Title.Contains("&#039;"))
@@ -71,6 +75,9 @@ namespace CCBoise.iOSApp
                     // try to combine date and reference for a description
                     if(element.Description == null)
                         element.Description = String.Format("{0}\n{1}", element["date"], element["reference"]);                   
+
+                    if(element["bannerImgUrl"] != null)
+                        return new ApiBannerElement(element, selectedAction);
 
                     return new ApiDetailElement(element, selectedAction);
 

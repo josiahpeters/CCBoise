@@ -36,9 +36,6 @@
     <Compile Include="WebApi.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CCBoise.js" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CCBoise.Core\CCBoise.Core.csproj">
       <Project>{c99da1d4-5b1d-4388-b2b2-e2f8451479f6}</Project>
       <Name>CCBoise.Core</Name>
