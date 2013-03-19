@@ -75,9 +75,17 @@ namespace CCBoise.iOSApp
 
             var tabs = new List<UIViewController>();
 
-            foreach (JsonObject section in sections)
+            int selectedTabIndex = 0;
+
+            for(int i = 0; i < sections.Count; i++)
             {
+                JsonObject section = sections[i] as JsonObject;
+
                 var tab = new UINavigationController();
+
+                // determine if the current tab should be loaded first
+                if (section.ContainsKey("selectedTab") && (bool)section["selectedTab"])
+                    selectedTabIndex = i;
 
                 string title = (string)section["title"];
                 string icon = (string)section["icon"];
@@ -89,13 +97,16 @@ namespace CCBoise.iOSApp
                 tab.PushViewController(new DialogViewController(jsonElement), false);
 
                 tabs.Add(tab);
+                
             }
-
+            
             navigation = new UITabBarController();
             navigation.ViewControllers = tabs.ToArray();
 
             navigation.CustomizableViewControllers = new UIViewController[0];
 
+            // set the selected index for which tab to show first
+            navigation.SelectedIndex = selectedTabIndex;
             window.RootViewController = navigation;
 
             window.MakeKeyAndVisible();

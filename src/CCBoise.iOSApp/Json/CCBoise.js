@@ -66,6 +66,7 @@
 		},
         {
             "title": "Home",
+            "selectedTab": true,
             "icon": "Images/TabIcons/53-house.png",
             "sections": [
                 {
