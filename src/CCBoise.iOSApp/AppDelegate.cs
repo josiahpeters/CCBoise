@@ -73,49 +73,65 @@ namespace CCBoise.iOSApp
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             JsonObject rootJson;
-            //http://boise.alertsense.com/CCBoise.js
-            using (var reader = File.OpenRead("Json/CCBoise.js"))
+
+            var jsonUrl = "https://raw.github.com/josiahpeters/CCBoise/master/CCBoise.js";
+
+            var request = new NSUrlRequest(new NSUrl(jsonUrl), NSUrlRequestCachePolicy.UseProtocolCachePolicy, 60);
+
+            var connection = new NSUrlConnection(request, new ConnectionDelegate((data, error) =>
             {
-                rootJson = JsonObject.Load(reader) as JsonObject;
-            }
+                // try to load the data from a URL. If there is an error, load it from the stream
+                try
+                {
+                    rootJson = JsonObject.Load(data) as JsonObject;
+                }
+                catch (Exception)
+                {
+                    using (var reader = File.OpenRead("Json/CCBoise.js"))
+                    {
+                        rootJson = JsonObject.Load(reader) as JsonObject;
+                    }
+                }
 
-            var sections = rootJson["tabs"] as JsonArray;
+                var sections = rootJson["tabs"] as JsonArray;
 
-            var tabs = new List<UIViewController>();
+                var tabs = new List<UIViewController>();
 
-            int selectedTabIndex = 0;
+                int selectedTabIndex = 0;
 
-            for(int i = 0; i < sections.Count; i++)
-            {
-                JsonObject section = sections[i] as JsonObject;
+                for (int i = 0; i < sections.Count; i++)
+                {
+                    JsonObject section = sections[i] as JsonObject;
 
-                var tab = new UINavigationController();
+                    var tab = new UINavigationController();
 
-                // determine if the current tab should be loaded first
-                if (section.ContainsKey("selectedTab") && (bool)section["selectedTab"])
-                    selectedTabIndex = i;
+                    // determine if the current tab should be loaded first
+                    if (section.ContainsKey("selectedTab") && (bool)section["selectedTab"])
+                        selectedTabIndex = i;
 
-                string title = (string)section["title"];
-                string icon = (string)section["icon"];
+                    string title = (string)section["title"];
+                    string icon = (string)section["icon"];
 
-                tab.TabBarItem = new UITabBarItem(title, UIImage.FromFile(icon), 1);
+                    tab.TabBarItem = new UITabBarItem(title, UIImage.FromFile(icon), 1);
 
-                var jsonElement = JsonElement.FromJson(section);
+                    var jsonElement = JsonElement.FromJson(section);
 
-                tab.PushViewController(new DialogViewController(jsonElement), false);
+                    tab.PushViewController(new DialogViewController(jsonElement), false);
 
-                tabs.Add(tab);
-                
-            }
-            
-            navigation = new UITabBarController();
-            navigation.ViewControllers = tabs.ToArray();
+                    tabs.Add(tab);
+                }
 
-            navigation.CustomizableViewControllers = new UIViewController[0];
+                navigation = new UITabBarController();
+                navigation.ViewControllers = tabs.ToArray();
 
-            // set the selected index for which tab to show first
-            navigation.SelectedIndex = selectedTabIndex;
-            window.RootViewController = navigation;
+                navigation.CustomizableViewControllers = new UIViewController[0];
+
+                // set the selected index for which tab to show first
+                navigation.SelectedIndex = selectedTabIndex;
+                window.RootViewController = navigation;
+                return;
+
+            }));
 
             window.MakeKeyAndVisible();
 

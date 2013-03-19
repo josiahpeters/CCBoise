@@ -72,7 +72,7 @@
                 {
                     "elements": [
                         {
-                            "caption": "Welcome to the Calvary Chapel Boise Mobile app",
+                            "caption": "Welcome to the Calvary Chapel Boise Mobile app loaded from https://raw.github.com/josiahpeters/CCBoise/master/CCBoise.js",
                             "type": "string",
                             "lines": "5",
                             "linebreak": "word-wrap"
