@@ -70,7 +70,7 @@ namespace CCBoise.iOSApp
 
                     // try to combine date and reference for a description
                     if(element.Description == null)
-                        element.Description = String.Format("{0} - {1}", element["date"], element["reference"]);                   
+                        element.Description = String.Format("{0}\n{1}", element["date"], element["reference"]);                   
 
                     return new ApiDetailElement(element, selectedAction);
 

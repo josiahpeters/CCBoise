@@ -114,8 +114,8 @@
                         },
                         {
                             "caption": "Location and Directions",
-                            "type": "htmlstring",
-                            "html": "<html><body><h1>Test</h1><p>Hello world</p>"
+                            "type": "actionUrl",
+                            "url": "http://maps.apple.com/?q=123+Auto+Drive+Boise,+Idaho+83709"
                         }
                     ]
                 }

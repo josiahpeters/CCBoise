@@ -14,11 +14,12 @@ using System.Text;
 namespace CCBoise.iOSApp
 {
 
-    public class ApiDetailElement : Element
+    public class ApiDetailElement : Element, IElementSizing
     {
         static NSString ckey = new NSString("ApiElement");
 
         ApiNode apiNode;
+        UILineBreakMode LineBreakMode = UILineBreakMode.WordWrap;
 
         string title;
         string detail;
@@ -52,6 +53,8 @@ namespace CCBoise.iOSApp
 
             cell.TextLabel.Text = title;
             cell.DetailTextLabel.Text = detail;
+            cell.DetailTextLabel.LineBreakMode = LineBreakMode;
+            cell.DetailTextLabel.Lines = 4;
 
             return cell;
         }
@@ -117,6 +120,32 @@ namespace CCBoise.iOSApp
                 loading = false;
                 dvc.ActivateController(createOnSelected(apiNode));
             }
+        }
+
+        public float GetHeight(UITableView tableView, NSIndexPath indexPath)
+        {
+            float margin = UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone ? 40f : 110f;
+            SizeF maxSize = new SizeF(tableView.Bounds.Width - margin, float.MaxValue);
+
+            maxSize.Width -= 20;
+
+            string c = Caption;
+            string v = detail;
+            // ensure the (multi-line) Value will be rendered inside the cell when no Caption is present
+            if (String.IsNullOrEmpty(c))
+                c = " ";
+
+            var captionFont = UIFont.BoldSystemFontOfSize(17);
+            float height = tableView.StringSize(c, captionFont, maxSize, LineBreakMode).Height;
+
+            if (!String.IsNullOrEmpty(v))
+            {
+                var subtitleFont = UIFont.SystemFontOfSize(14);
+
+                height += tableView.StringSize(v, subtitleFont, maxSize, LineBreakMode).Height;
+            }
+
+            return height + 10;
         }
     }
 }
