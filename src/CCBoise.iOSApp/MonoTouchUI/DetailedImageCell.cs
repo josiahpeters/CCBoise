@@ -13,21 +13,16 @@ namespace CCBoise.iOSApp
         public string Title { get; set; }
         public string SubTitle { get; set; }
         public Uri ImageUri { get; set; }
+        public UIImage Image { get; set; }
     }
     public class DetailedImageCell : UITableViewCell
     {
         DetailedImageView videoCellView;
-
+        DetailedImageElement element;
         DetailImageData data;
 
-        public DetailedImageCell(string title, string subTitle, string imageUri)
+        public DetailedImageCell(DetailImageData data)
         {
-            data = new DetailImageData { 
-                Title = title,
-                SubTitle = subTitle,
-                ImageUri = new Uri(imageUri)
-            };
-
             videoCellView = new DetailedImageView(data);
             UpdateCell(data);
             ContentView.Add(videoCellView);
@@ -47,7 +42,7 @@ namespace CCBoise.iOSApp
             videoCellView.SetNeedsDisplay();
         }
 
-        public class DetailedImageView : UIView, IImageUpdated
+        public class DetailedImageView : UIView
         {
             UILabel titleLabel;
             UILabel subTitleLabel;
@@ -59,35 +54,6 @@ namespace CCBoise.iOSApp
 
             UILineBreakMode LineBreakMode = UILineBreakMode.TailTruncation;
 
-
-            UIImage image;
-            Uri imageUri;
-
-            public UIImage Image
-            {
-                get
-                {
-                    return image;
-                }
-                set
-                {
-                    image = value;
-                    imageUri = null;
-                }
-            }
-            public Uri ImageUri
-            {
-                get
-                {
-                    return imageUri;
-                }
-                set
-                {
-                    imageUri = value;
-                    image = null;
-                }
-            }
-
             public DetailedImageView(DetailImageData data)
             {
                 titleLabel = new UILabel() { Lines = 2, Font = titleFont };
@@ -98,16 +64,6 @@ namespace CCBoise.iOSApp
             public void Update(DetailImageData newData)
             {
                 data = newData;
-
-                ImageUri = data.ImageUri;
-
-
-                if (ImageUri != null)
-                    image = ImageLoader.DefaultRequestImage(ImageUri, this);
-                else if (Image != null)
-                    image = Image;
-                else
-                    image = null;
 
                 titleLabel.Text = data.Title;
                 subTitleLabel.Text = data.SubTitle;
@@ -156,7 +112,7 @@ namespace CCBoise.iOSApp
                 var maxTitleHeight = StringSize("A\nA", titleFont, contentWidth, LineBreakMode);
 
                 var computedTitleSize = StringSize(data.Title, titleFont, contentWidth, LineBreakMode);
-                
+
                 float titleHeight = maxTitleHeight.Height;
 
                 if (titleHeight > computedTitleSize.Height)
@@ -172,24 +128,16 @@ namespace CCBoise.iOSApp
                 //subTitleLabel.DrawText(new RectangleF(padding, padding + titleHeight, contentWidth, height - (titleHeight + padding)));
                 DrawString(data.SubTitle, new RectangleF(padding, padding + titleHeight, contentWidth, height - (titleHeight + padding)), subTitleFont);
 
-                if (image != null)
+                if (data.Image != null)
                 {
-                    float ratio = image.Size.Height / image.Size.Width;
+                    float ratio = data.Image.Size.Height / data.Image.Size.Width;
                     float imageHeight = ratio * imageWidth;
 
-                    image.Draw(new RectangleF(imageX, padding, imageWidth, imageHeight));
+                    data.Image.Draw(new RectangleF(imageX, padding, imageWidth, imageHeight));
 
                 }
 
                 //context.DrawLinearGradient(myGradient, start, end, 0);
-            }
-
-            public void UpdatedImage(Uri uri)
-            {
-                if (uri == null || ImageUri == null)
-                    return;
-
-                SetNeedsDisplay(); 
             }
         }
     }

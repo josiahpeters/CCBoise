@@ -12,25 +12,29 @@ using System.Linq;
 using System.Text;
 
 namespace CCBoise.iOSApp
-{    
-    public class DetailedImageElement : Element, IElementSizing
+{
+    public class DetailedImageElement : Element, IElementSizing, IImageUpdated
     {
         static NSString ckey = new NSString("detailedImageKey");
 
-        string imgUrl = "";
-        string title;
-        string detail;
+        DetailImageData detailImageData;
 
         ApiNode apiNode;
 
         Func<ApiNode, UIViewController> createOnSelected;
 
+        UIImage image;
+        Uri imageUri;
+
         public DetailedImageElement(string imageUri, string title, string detail)
             : base(title)
         {
-            this.imgUrl = imageUri;
-            this.title = title;
-            this.detail = detail;
+            detailImageData = new DetailImageData()
+            {
+                ImageUri = new Uri(imageUri),
+                Title = title,
+                SubTitle = detail
+            };
         }
 
         public DetailedImageElement(ApiElement apiElement)
@@ -45,9 +49,13 @@ namespace CCBoise.iOSApp
         public DetailedImageElement(ApiNode apiNode, Func<ApiNode, UIViewController> createOnSelected)
             : base(apiNode.Title)
         {
-            this.imgUrl = apiNode["thumbnailSml"];
-            this.title = apiNode.Title;
-            this.detail = apiNode.Description;
+            detailImageData = new DetailImageData()
+            {
+                ImageUri = new Uri(apiNode["thumbnailSml"]),
+                Title = apiNode.Title,
+                SubTitle = apiNode.Description
+            };
+
             this.apiNode = apiNode;
             this.createOnSelected = createOnSelected;
         }
@@ -57,13 +65,27 @@ namespace CCBoise.iOSApp
             var cell = tv.DequeueReusableCell(ckey);
             if (cell == null)
             {
-                cell = new DetailedImageCell(title, detail, imgUrl)
+                cell = new DetailedImageCell(detailImageData)
                 {
                     SelectionStyle = UITableViewCellSelectionStyle.Blue
                 };
             }
 
+            PrepareCell(cell);
+
             return cell;
+        }
+
+        protected void PrepareCell(UITableViewCell cell)
+        {
+            var detailCell = cell as DetailedImageCell;
+
+            if (detailImageData.Image == null)
+            {
+                detailImageData.Image = ImageLoader.DefaultRequestImage(detailImageData.ImageUri, this);
+
+                detailCell.UpdateCell(detailImageData);
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -81,6 +103,17 @@ namespace CCBoise.iOSApp
             var viewController = createOnSelected(apiNode);
 
             dvc.ActivateController(viewController);
+        }
+
+        public void UpdatedImage(Uri uri)
+        {
+            if (uri == null || detailImageData.ImageUri == null)
+                return;
+
+            var root = GetImmediateRootElement();
+            if (root == null || root.TableView == null)
+                return;
+            root.TableView.ReloadRows(new NSIndexPath[] { IndexPath }, UITableViewRowAnimation.None);
         }
     }
 }
