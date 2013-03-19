@@ -13,7 +13,7 @@
                             "type": "customRoot",
                             "childType":"detailedImage",
                             "childAction":"video",
-                            "contentNode":"videoSrc2",
+                            "contentNode":"videoSrc1",
                             "apiUrl":"http://www.ccboise.org/api/messages/video",
                             "sections": [
 							
