@@ -23,9 +23,6 @@ namespace CCBoise.iOSApp
 
         Func<ApiNode, UIViewController> createOnSelected;
 
-        UIImage image;
-        Uri imageUri;
-
         public DetailedImageElement(string imageUri, string title, string detail)
             : base(title)
         {
@@ -35,15 +32,6 @@ namespace CCBoise.iOSApp
                 Title = title,
                 SubTitle = detail
             };
-        }
-
-        public DetailedImageElement(ApiElement apiElement)
-            : base(apiElement.Title)
-        {
-            //this.imgUrl = apiElement["thumbnailSml"].ToString();
-            //this.title = apiElement.Title;
-            //this.detail = apiElement.Description;
-            //this.apiElement = apiElement;
         }
 
         public DetailedImageElement(ApiNode apiNode, Func<ApiNode, UIViewController> createOnSelected)
@@ -65,27 +53,29 @@ namespace CCBoise.iOSApp
             var cell = tv.DequeueReusableCell(ckey);
             if (cell == null)
             {
-                cell = new DetailedImageCell(detailImageData)
-                {
-                    SelectionStyle = UITableViewCellSelectionStyle.Blue
-                };
+                cell = new UITableViewCell(UITableViewCellStyle.Subtitle, ckey);
+                cell.SelectionStyle = UITableViewCellSelectionStyle.Blue;
+                cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
             }
 
-            PrepareCell(cell);
-
-            return cell;
-        }
-
-        protected void PrepareCell(UITableViewCell cell)
-        {
-            var detailCell = cell as DetailedImageCell;
-
-            if (detailImageData.Image == null)
+            cell.TextLabel.Text = detailImageData.Title;
+            cell.DetailTextLabel.Text = detailImageData.SubTitle;
+            cell.DetailTextLabel.LineBreakMode = UILineBreakMode.WordWrap;
+            cell.DetailTextLabel.Lines = 2;
+            
+            // to show an image on the right instead of the left. Just set the accessory view to that of a UIImageView.
+            if (cell.AccessoryView == null)
             {
-                detailImageData.Image = ImageLoader.DefaultRequestImage(detailImageData.ImageUri, this);
+                var img = ImageLoader.DefaultRequestImage(detailImageData.ImageUri, this);
 
-                detailCell.UpdateCell(detailImageData);
+                if (img != null)
+                {
+                    var imgView = new UIImageView(img);
+                    imgView.Frame = new RectangleF(0,0,75,65);
+                    cell.AccessoryView = imgView;
+                }
             }
+            return cell;
         }
 
         protected override void Dispose(bool disposing)
@@ -95,7 +85,7 @@ namespace CCBoise.iOSApp
 
         public float GetHeight(UITableView tableView, NSIndexPath indexPath)
         {
-            return 110f;
+            return 85f;
         }
 
         public override void Selected(DialogViewController dvc, UITableView tableView, NSIndexPath path)
