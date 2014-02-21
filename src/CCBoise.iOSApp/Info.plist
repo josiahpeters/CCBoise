@@ -12,14 +12,10 @@
 	<array>
 		<integer>1</integer>
 	</array>
-	<key>CFBundleDisplayName</key>
-	<string>Boise Calvary</string>
-	<key>CFBundleIdentifier</key>
-	<string>CCBoise</string>
 	<key>CFBundleVersion</key>
-	<string>0.0.1a</string>
+	<string>0.0.4a</string>
 	<key>MinimumOSVersion</key>
-	<string>6.1</string>
+	<string>7.0</string>
 	<key>NSMainNibFile</key>
 	<string></string>
 	<key>MKDirectionsApplicationSupportedModes</key>
@@ -33,5 +29,11 @@
 		<string>Resources/icon50.png</string>
 		<string>Resources/icon58.png</string>
 	</array>
+	<key>CFBundleDisplayName</key>
+	<string>Calvary Chapel Boise</string>
+	<key>CFBundleIdentifier</key>
+	<string>ccboise.app</string>
+	<key>CFBundleShortVersionString</key>
+	<string>4</string>
 </dict>
 </plist>

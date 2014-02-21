@@ -38,9 +38,10 @@
     <ConsolePause>False</ConsolePause>
     <MtouchLink>Full</MtouchLink>
     <MtouchDebug>True</MtouchDebug>
-    <MtouchSdkVersion>6.1</MtouchSdkVersion>
-    <MtouchExtraArgs />
-    <MtouchArch>Default, ARMv7</MtouchArch>
+    <MtouchSdkVersion>7.0</MtouchSdkVersion>
+    <MtouchArch>ARMv7</MtouchArch>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -61,7 +62,14 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchDebug>True</MtouchDebug>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Josiah Peters (X3QK4QGFD4)</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
+    <CodesignProvision>E24235B5-75B4-4DC9-9EB8-1AF235FA355E</CodesignProvision>
+    <BuildIpa>true</BuildIpa>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -100,68 +108,62 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="MonoTouch.Dialog">
-      <HintPath>\MonoTouch.Dialog.dll</HintPath>
+      <HintPath>MonoTouch.Dialog.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="..\CCBoise.iOSApp\Resources\icon57.png" />
-    <BundleResource Include="..\CCBoise.iOSApp\Resources\icon114.png" />
-    <BundleResource Include="..\CCBoise.iOSApp\Resources\icon72.png" />
-    <BundleResource Include="..\CCBoise.iOSApp\Resources\icon29.png" />
-    <BundleResource Include="..\CCBoise.iOSApp\Resources\icon50.png" />
-    <BundleResource Include="..\CCBoise.iOSApp\Resources\icon58.png" />
-    <Content Include="..\CCBoise.iOSApp\Images\TabIcons\18-envelope.png" />
-    <Content Include="..\CCBoise.iOSApp\Images\TabIcons\53-house.png" />
-    <Content Include="..\CCBoise.iOSApp\Images\TabIcons\55-network.png" />
-    <Content Include="..\CCBoise.iOSApp\Images\TabIcons\60-signpost.png" />
-    <Content Include="..\CCBoise.iOSApp\Images\TabIcons\83-calendar.png" />
-    <Content Include="..\CCBoise.iOSApp\MonoTouch.Dialog.dll" />
-    <Content Include="..\CCBoise.iOSApp\MonoTouch.Dialog.pdb" />
     <Content Include="sample.m4v" />
-    <None Include="..\CCBoise.iOSApp\Info.plist" />
-    <ITunesArtwork Include="..\CCBoise.iOSApp\ITunesArtwork" />
-    <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\Placeholder.png" />
-    <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-cm-icon.png" />
-    <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-et-icon.png" />
-    <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-sunday-icon.png" />
-    <BundleResource Include="..\CCBoise.iOSApp\Images\Icons\video-channel-voices-icon.png" />
     <Content Include="Json\CCBoise.js" />
     <Content Include="HtmlContent\main-style.css" />
+    <BundleResource Include="Resources\icon57.png" />
+    <BundleResource Include="Resources\icon114.png" />
+    <BundleResource Include="Resources\icon72.png" />
+    <BundleResource Include="Resources\icon29.png" />
+    <BundleResource Include="Resources\icon50.png" />
+    <BundleResource Include="Resources\icon58.png" />
+    <Content Include="Images\TabIcons\18-envelope.png" />
+    <Content Include="Images\TabIcons\53-house.png" />
+    <Content Include="Images\TabIcons\55-network.png" />
+    <Content Include="Images\TabIcons\60-signpost.png" />
+    <Content Include="Images\TabIcons\83-calendar.png" />
+    <Content Include="MonoTouch.Dialog.dll" />
+    <Content Include="MonoTouch.Dialog.pdb" />
+    <None Include="Info.plist" />
+    <ITunesArtwork Include="ITunesArtwork" />
+    <BundleResource Include="Images\Icons\Placeholder.png" />
+    <BundleResource Include="Images\Icons\video-channel-cm-icon.png" />
+    <BundleResource Include="Images\Icons\video-channel-et-icon.png" />
+    <BundleResource Include="Images\Icons\video-channel-sunday-icon.png" />
+    <BundleResource Include="Images\Icons\video-channel-voices-icon.png" />
+    <None Include="RELEASE-NOTES.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\CCBoise.iOSApp\iOSWebRequest.cs" />
-    <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\HtmlStringElement.cs" />
     <Compile Include="DrupalApiParser.cs" />
     <Compile Include="MonoTouchUI\ActionUrlElement.cs" />
     <Compile Include="MonoTouchUI\ApiDetailElement.cs" />
     <Compile Include="MonoTouchUI\CustomRootElement.cs" />
     <Compile Include="MonoTouchUI\DetailedImageElement.cs" />
-    <Compile Include="..\CCBoise.iOSApp\Main.cs" />
-    <Compile Include="..\CCBoise.iOSApp\AppDelegate.cs" />
-    <Compile Include="..\CCBoise.iOSApp\MonoTouchUI\DetailedImageCell.cs" />
-    <Compile Include="..\CCBoise.iOSApp\NavViewController.cs" />
     <Compile Include="MonoTouchUI\ImageBannerCell.cs" />
     <Compile Include="MonoTouchUI\UIVideoController.cs" />
     <Compile Include="MonoTouchUI\ApiVideoElement.cs" />
     <Compile Include="MonoTouchUI\WebViewCell.cs" />
+    <Compile Include="iOSWebRequest.cs" />
+    <Compile Include="MonoTouchUI\HtmlStringElement.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="MonoTouchUI\DetailedImageCell.cs" />
+    <Compile Include="NavViewController.cs" />
+    <Compile Include="WebApi.cs" />
+    <Compile Include="IApiSource.cs" />
+    <Compile Include="ApiNode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
-    <BootstrapperPackage Include="..\CCBoise.iOSApp\Microsoft.Net.Client.3.5">
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="..\CCBoise.iOSApp\Microsoft.Net.Framework.3.5.SP1">
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CCBoise.Core\CCBoise.Core.csproj">
-      <Project>{C99DA1D4-5B1D-4388-B2B2-E2F8451479F6}</Project>
-      <Name>CCBoise.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CCBoise.Data\CCBoise.Data.csproj">
-      <Project>{89DC061B-1853-4100-AADF-EC051F4A21C0}</Project>
-      <Name>CCBoise.Data</Name>
-    </ProjectReference>
   </ItemGroup>
 </Project>

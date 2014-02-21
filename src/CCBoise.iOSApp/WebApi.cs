@@ -71,7 +71,7 @@ namespace CCBoise.Data
 
             endpoints = new Dictionary<string, WebApiEndpoint>()
             {
-                { "video", new WebApiEndpoint { Name = "video", Url = "http://www.ccboise.org/api/messages/video" } },
+				{ "video", new WebApiEndpoint { Name = "video", Url = "http://www.ccboise.org/api/messages/video/" } },
                 { "audio", new WebApiEndpoint { Name = "audio", Url = "http://www.ccboise.org/api/messages/audio" } },
                 { "devotional", new WebApiEndpoint { Name = "devotional", Url = "http://www.ccboise.org/api/daily/devotionals", ItemUrl = "http://www.ccboise.org/api/daily/devotional/{ItemId}" } },
                 { "prayer", new WebApiEndpoint { Name = "prayer", Url = "http://www.ccboise.org/api/daily/prayer" } },

@@ -1,4 +1,4 @@
-﻿using CCBoise.Core;
+﻿
 using MonoTouch.Foundation;
 using System;
 using System.Collections.Generic;
@@ -6,6 +6,7 @@ using System.IO;
 using System.Json;
 using System.Linq;
 using System.Text;
+using CCBoise.Core;
 
 namespace CCBoise.iOSApp
 {

@@ -1,26 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CCBoise.Data/WebApi.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CCBoise.iOSApp/WebApi.cs">
     <Files>
-      <File FileName="CCBoise.iOSApp/AppDelegate.cs" Line="12" Column="44" />
-      <File FileName="CCBoise.Data/WebApi.cs" Line="9" Column="23" />
+      <File FileName="CCBoise.iOSApp/Info.plist" />
+      <File FileName="CCBoise.iOSApp/AppDelegate.cs" Line="29" Column="11" />
+      <File FileName="CCBoise.iOSApp/Main.cs" Line="17" Column="39" />
+      <File FileName="CCBoise.iOSApp/Json/CCBoise.js" Line="17" Column="81" />
+      <File FileName="CCBoise.iOSApp/ApiNode.cs" Line="1" Column="1" />
+      <File FileName="CCBoise.iOSApp/IApiSource.cs" Line="1" Column="1" />
+      <File FileName="CCBoise.iOSApp/WebApi.cs" Line="74" Column="102" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="CCBoise.Core" expanded="True" />
-          <Node name="CCBoise.Data" expanded="True">
-            <Node name="WebApi.cs" selected="True" />
-          </Node>
-          <Node name="CCBoise.iOSApp" expanded="True">
-            <Node name="Images" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.CCBoise.iOSApp>
+    <MonoDevelop.MacDev.AppleDevelopmentTeam DeveloperId="LV5U2DJA2D" TeamId="7TC9Q2FS4R" />
+    <IPhoneTestFlightSettings_27CDebug ApiToken="2d64b0b4047cf052cd2b44dfc6d86016_MTY0MTc1MTIwMTQtMDItMTIgMTQ6MjU6NTIuMTc1NjA5" TeamToken="12e29b9db205966b3839552893e4c0c2_MzM3NzM2MjAxNC0wMi0xOSAxNjozODo0Ny43NDUyNTY" ReleaseNotes="same build 1" NotifyTeamMembers="True" ReplaceBinaries="True" DistributionLists="church" UploadDSYMs="False" />
+  </MonoDevelop.Ide.ItemProperties.CCBoise.iOSApp>
 </Properties>

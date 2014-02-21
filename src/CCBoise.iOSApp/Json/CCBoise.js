@@ -14,7 +14,7 @@
                             "childType":"detailedImage",
                             "childAction":"video",
                             "contentNode":"videoSrc1",
-                            "apiUrl":"http://www.ccboise.org/api/messages/video",
+                            "apiUrl":"http://www.ccboise.org/api/messages/video/",
                             "sections": [
 							
                             ]
